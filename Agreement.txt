@@ -17,10 +17,10 @@ https://urlshortener.teams.microsoft.com/8D7432B5474B6BC-2-3
 First scrum was held during Wk 2 to define how we will manage comms and future scrums, collaboration etc.  Notes from this are below, with easy to find details shown at top of this page.
 
 1.	No comms before 8am or after 10pm
-2.	Usual comms method is Teams at the URL above.  For faster/urgent, use the WhatsApp group we are each now members of.
-3.	We’ll promote good teamwork etc etc
+2.	Usual comms method is Teams at the URL above. For faster/urgent, use the WhatsApp group we are each now members of.
+3.	We’ll promote good teamwork etc etc.
 4.	We’ll use GitHub for code versioning, pulls, clones etc
-5.	Agreed to check Teams (AgileProject) daily to keep on top of what’s going on
+5.	Agreed to check Teams (AgileProject) daily to keep on top of what’s going on.
 6.	Wednesdays – Main scrum day.  Meetings to be held in QMB (most likely), room will be booked by Derek
 
 That’s it.  We are now waiting on a client or guidance from Debela on how to proceed next.
