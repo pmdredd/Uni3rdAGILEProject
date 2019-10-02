@@ -6,8 +6,6 @@ Derek Brankin – Scrum master
 Jack Bremner – Coding whizz
 Jack Laird – Github
 
-Groups URL  https://docs.google.com/spreadsheets/d/19CBjwRCPfAuAQFL5fMJ0HvsL3lehvGQD7xpG9xMGjg/edit#gid=0
-
 GitHub Repo URL
 https://github.com/Lairdd1989/Uni3rdAGILEProject
 
