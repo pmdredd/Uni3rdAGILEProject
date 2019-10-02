@@ -1,7 +1,7 @@
-GA30003 Agile Project
+﻿GA30003 Agile Project
 Group 4
 Members & roles:
-Stuart Anderson – forgot, but it’s really important
+Stuart Anderson – Comms master
 Derek Brankin – Scrum master
 Jack Bremner – Coding whizz
 Jack Laird – Github
