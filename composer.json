@@ -1,0 +1,15 @@
+{
+    "name": "team/agile-project",
+    "description": "An application for lecturers to manage student coursework submissions",
+    "type": "project",
+    "require-dev": {
+        "phpunit/phpunit": "^8.4"
+    },
+    "authors": [
+        {
+            "name": "Jack Bremner",
+            "email": "j.z.bremner@dundee.ac.uk"
+        }
+    ],
+    "require": {}
+}
