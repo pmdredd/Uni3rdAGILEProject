@@ -9,6 +9,15 @@
         {
             "name": "Jack Bremner",
             "email": "j.z.bremner@dundee.ac.uk"
+        },
+        {
+            "name": "Jack Laird"
+        },
+        {
+            "name": "Derek Brankin"
+        },
+        {
+            "name": "Stuart Anderson"
         }
     ],
     "require": {}
