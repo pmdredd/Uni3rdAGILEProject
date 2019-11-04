@@ -26,11 +26,9 @@ $students = getAllStudents();
 echo "All Students " . "\n";
 foreach ($students as $student) {
     echo "ID: " . $student['student_id'] . ", Name: " . $student['name'] . "\n";
-    echo "Name: " . $student['name'] . "\n";
 }
 
 echo "\n";
-echo "\n";
 
 $student = getStudentById(1);
-echo "Name: " . $student['name'];
+echo "Name: " . $student['name'] . "\n";
