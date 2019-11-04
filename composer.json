@@ -20,5 +20,7 @@
             "name": "Stuart Anderson"
         }
     ],
-    "require": {}
+    "require": {
+      "ext-pdo": "*"
+    }
 }
