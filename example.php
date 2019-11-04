@@ -8,14 +8,14 @@ function add($arg1, $arg2)
 
 function getAllStudents()
 {
-    $pdo = (new DbConnection)->connect();
+    $pdo = DbConnection::getInstance()->getConn();
     $students = $pdo->query("SELECT * FROM students");
     return $students;
 }
 
 function getStudentById($studentId)
 {
-    $pdo = (new DbConnection)->connect();
+    $pdo = DbConnection::getInstance()->getConn();
     $stmt = $pdo->prepare("SELECT * from students WHERE student_id = ?");
     $stmt->execute([$studentId]);
     $student = $stmt->fetch();

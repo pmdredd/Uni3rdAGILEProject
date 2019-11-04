@@ -1,12 +1,26 @@
 <?php
 
 class DbConnection {
-    private $pdo;
- 
-    public function connect() {
-        if ($this->pdo == null) {
-            $this->pdo = new PDO("sqlite:database/courseworkapp.db");
+    private static $instance = null;
+    private $conn;
+
+    public function __construct()
+    {
+        $this->conn = new PDO("sqlite:database/courseworkapp.db");
+    }
+
+    public static function getInstance() : DbConnection
+    {
+        if(!self::$instance)
+        {
+            self::$instance = new DbConnection();
         }
-        return $this->pdo;
+
+        return self::$instance;
+    }
+
+    public function getConn(): PDO
+    {
+        return $this->conn;
     }
 }
