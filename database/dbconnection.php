@@ -2,11 +2,11 @@
 
 class DB {
     private static $instance = null;
-    private $conn;
+    private $pdo;
 
     public function __construct()
     {
-        $this->conn = new PDO("sqlite:database/courseworkapp.db");
+        $this->pdo = new PDO("sqlite:database/courseworkapp.db");
     }
 
     public static function getInstance() : DB
@@ -15,12 +15,13 @@ class DB {
         {
             self::$instance = new DB();
         }
-
         return self::$instance;
     }
 
-    public function getConn(): PDO
+    public function run($sql, $params = NULL)
     {
-        return $this->conn;
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($params);
+        return $stmt;
     }
 }
