@@ -2,38 +2,30 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Raise Request</title>
+        <title>Submit Student Marks</title>
         </head>
     <body>
-        <?php
-        
-        
-        
-session_start();
+        <?php     
+        session_start();
         require_once ('dbconnection.php'); // $connection
-      
-        $ID = Rand(999999999,1);
-        //Insters the Request
-        $sql = "INSERT INTO requests (RequestID,Subject, Info, 
+        $sql = "INSERT INTO STUDENTABLE (RequestID,Subject, Info, 
             Email, OpenDate) VALUES ("
                 .$ID.",'" 
-               .$_POST["Subjects"] . "', '" .
-               $_POST["info"] . "', '" .
-               $_SESSION["email"]. "', "
+               .$_POST["StudentID"] . "', '" .
+               $_POST["CourseID"] . "', '" .
+               $_POST["Marks"]. "', "
               . "CURDATE()"
                .")"    ;
     
-           $query_successful = mysqli_query($connection, $sql);
-        
+           $query_successful = mysqli_query($connection, $sql);        
         if ($query_successful) {
-            echo '<p>Request has been successfully Raised!</p>';
-            echo '<p> Request ID is ' . $ID ;
+            echo '<p>Student Marks Sumbitted Sucessfully</p>';
+            echo '<p>Details: ' . $ID . _POST["CourseID"] . $_SESSION["Marks"];
             echo '<p><a href="SystemHome.php">Home</a></p>';
         } else {
             echo '<p>Request failed!</p>';
             echo '<p>Please try again. <a href="SystemHome.php">Home</a></p>';
-        }
-        
+        }      
         mysqli_close($connection); 
         ?>
     </body>
