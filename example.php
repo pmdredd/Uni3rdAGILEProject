@@ -1,5 +1,5 @@
 <?php
-include('database/dbconnection.php');
+include 'database/DBConnection.php';
 
 function add($arg1, $arg2)
 {
@@ -8,14 +8,14 @@ function add($arg1, $arg2)
 
 function getAllStudents()
 {
-    $pdo = DbConnection::getInstance()->getConn();
+    $pdo = DB::getInstance()->getConn();
     $students = $pdo->query("SELECT * FROM students");
     return $students;
 }
 
 function getStudentById($studentId)
 {
-    $pdo = DbConnection::getInstance()->getConn();
+    $pdo = DB::getInstance()->getConn();
     $stmt = $pdo->prepare("SELECT * from students WHERE student_id = ?");
     $stmt->execute([$studentId]);
     $student = $stmt->fetch();
