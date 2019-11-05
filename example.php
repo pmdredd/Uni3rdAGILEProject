@@ -1,5 +1,5 @@
 <?php
-include 'database/DBConnection.php';
+require_once 'database/DBConnection.php';
 
 function add($arg1, $arg2)
 {
