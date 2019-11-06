@@ -9,8 +9,7 @@ session_start();
     </head>
     <body>
         <?php
-        $adminacc = $_POST["username"];
-
+        
         $sql = "SELECT Username FROM users WHERE Username = '"
                 . strtolower(trim($_POST["username"])) . "' AND password = '"
                 . sha1("LSaYEj4ffKrvnyZ7" . $_POST["password"])
