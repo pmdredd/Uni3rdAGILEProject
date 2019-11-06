@@ -1,13 +1,36 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-include 'all_courses.php';
+require_once 'courses/course_functions.php';
 
-final class ExampleTest extends TestCase
-{
-    public function testAllStudentsReturnsRecords()
-    {
-        $students = getAllStudents();
-        $this->assertNotEmpty($students);
+final class CourseTest extends TestCase {
+
+    // will only actually check if the courses table is empty,
+    // not if the rows it returns are correct (e.g. wrong table)
+    public function testGetAllCourses() {
+        $courses = getAllCourses();
+        $this->assertNotEmpty($courses);
+    }
+
+    // create a new course called 'test_course', assert that the lastest entry 
+    // into the courses table has name 'test_course', then remove that entry.
+    public function testCreateCourse() {
+        createCourse("test_course");
+        $test_course = DB::run("SELECT * FROM courses ORDER BY course_id DESC LIMIT 1")->fetch(PDO::FETCH_ASSOC);
+        $course_name = $test_course['name'];
+        $this->assertSame("test_course", $course_name);
+        DB::run("DELETE FROM courses WHERE course_id = ?", [$test_course['course_id']]);
+    }
+
+    // create a new course called 'test_course', assert that the lastest entry 
+    // into the courses table has the same course_id that getCourseById returns,
+    // then remove that entry
+    public function testGetCourseById() {
+        DB::run("INSERT INTO courses (name) VALUES (?)", ['test_course']);
+        $test_course = DB::run("SELECT * FROM courses WHERE name LIKE 'test_course'")->fetch(PDO::FETCH_ASSOC);
+        $test_course_id = $test_course['course_id'];
+        $course = getCourseById($test_course_id);
+        $this->assertSame($test_course_id, $course['course_id']);
+        DB::run("DELETE FROM courses WHERE course_id =?", [$test_course_id]);
     }
 }

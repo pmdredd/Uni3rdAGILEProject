@@ -1,5 +1,9 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'].'/database/dbconnection.php';
+if (php_sapi_name() == "cli") {
+    require_once getcwd().'../database/dbconnection.php';
+} else {
+    require_once $_SERVER['DOCUMENT_ROOT'].'/database/dbconnection.php';
+}
 
 function getAllCourses() {
     $courses = DB::run("SELECT * FROM courses")->fetchAll(PDO::FETCH_ASSOC);
