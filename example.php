@@ -8,15 +8,13 @@ function add($arg1, $arg2)
 
 function getAllStudents()
 {
-    $db = DB::getInstance();
-    $students = $db->run("SELECT * FROM students");
+    $students = DB::run("SELECT * FROM students");
     return $students;
 }
 
 function getStudentById($studentId)
 {
-    $db = DB::getInstance();
-    $student = $db->run("SELECT * from students WHERE student_id = ?", [$studentId])->fetch();
+    $student = DB::run("SELECT * from students WHERE student_id = ?", [$studentId])->fetch();
     return $student;
 }
 
