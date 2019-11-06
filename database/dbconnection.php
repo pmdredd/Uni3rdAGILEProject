@@ -6,7 +6,7 @@ class DB {
 
     public function __construct()
     {
-        self::$pdo = new PDO("sqlite:database/courseworkapp.db");
+        self::$pdo = new PDO("sqlite:".$_SERVER['DOCUMENT_ROOT']."/database/courseworkapp.db");
     }
 
     public static function getInstance() : DB
