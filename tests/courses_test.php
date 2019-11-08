@@ -17,8 +17,9 @@ final class CourseTest extends TestCase {
     public function testCreateCourse() {
         createCourse("test_course");
         $test_course = DB::run("SELECT * FROM courses ORDER BY course_id DESC LIMIT 1")->fetch(PDO::FETCH_ASSOC);
-        $course_name = $test_course['name'];
-        $this->assertSame("test_course", $course_name);
+
+        $this->assertSame("test_course", $test_course["name"]);
+
         DB::run("DELETE FROM courses WHERE course_id = ?", [$test_course['course_id']]);
     }
 
@@ -30,7 +31,25 @@ final class CourseTest extends TestCase {
         $test_course = DB::run("SELECT * FROM courses WHERE name LIKE 'test_course'")->fetch(PDO::FETCH_ASSOC);
         $test_course_id = $test_course['course_id'];
         $course = getCourseById($test_course_id);
+
         $this->assertSame($test_course_id, $course['course_id']);
+
+        DB::run("DELETE FROM courses WHERE course_id =?", [$test_course_id]);
+    }
+
+    public function testDeleteCourseById() {
+        DB::run("INSERT INTO courses (name) VALUES (?)", ['test_course']);
+        $test_course = DB::run("SELECT * FROM courses WHERE name LIKE 'test_course'")->fetch(PDO::FETCH_ASSOC);
+        $test_course_id = $test_course['course_id'];
+        // the record should exist, the number of columns in count should be 1
+        $recordExists = DB::run("SELECT COUNT(1) FROM courses WHERE course_id = ?", [$test_course_id])->fetchColumn();
+
+        $this->assertEquals(1, $recordExists);
+        deleteCourseById($test_course_id);
+
+        // the record should be deleted, the number of columns in count should be 0
+        $recordExists = DB::run("SELECT COUNT(1) FROM courses WHERE course_id = ?", [$test_course_id])->fetchColumn();
+        $this->assertEquals(0, $recordExists);
         DB::run("DELETE FROM courses WHERE course_id =?", [$test_course_id]);
     }
 }

@@ -20,3 +20,10 @@ function getCourseById($course_id) {
     $course = DB::run($query, [$course_id])->fetch(PDO::FETCH_ASSOC);
     return $course;
 }
+
+function deleteCourseById($course_id) {
+    getCourseById($course_id);
+    $query = "DELETE FROM courses WHERE course_id=?";
+    $course = DB::run($query, [$course_id]);
+    return $course;
+}
