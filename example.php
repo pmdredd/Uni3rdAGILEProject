@@ -1,19 +1,17 @@
 <?php
-require_once 'database/DBConnection.php';
+require_once 'database/dbconnection.php';
 
 function add($arg1, $arg2)
 {
     return $arg1 + $arg2;
 }
 
-function getAllStudents()
-{
+function getAllStudents() {
     $students = DB::run("SELECT * FROM students");
     return $students;
 }
 
-function getStudentById($studentId)
-{
+function getStudentById($studentId) {
     $student = DB::run("SELECT * from students WHERE student_id = ?", [$studentId])->fetch();
     return $student;
 }
