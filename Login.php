@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,37 +5,38 @@ session_start();
         <title>Portal Homepage</title>
     </head>
     <body>
-        <?php
-        
-        $sql = "SELECT Username FROM users WHERE Username = '"
-                . strtolower(trim($_POST["username"])) . "' AND password = '"
-                . sha1("LSaYEj4ffKrvnyZ7" . $_POST["password"])
-                . "'";
+        <?php        
+        session_start();
+        $errors = array();
 
-        $result = mysqli_query($connection, $sql);
-        if (mysqli_num_rows($result) == 1) {
 
-            while ($row = mysqli_fetch_assoc($result)) {
-                $_SESSION["username"] = $row["Username"];
+        if (isset($_POST['email']) && isset($_POST['password'])) {
+            require_once 'database/dbconnection.php';
+
+            $user = DB::run("SELECT * from users where email = ?", [$_POST['email']])->fetch(PDO::FETCH_ASSOC);
+
+            if (!$user) {
+                array_push($errors, "Username is incorrect");
+            // uncomment thge below once user creation uses password hashing
+            // } else if (!password_verify('$_POST['password']', $user['password'])) {
+            //     array_push($errors, "Password is incorrect");
             }
-            mysqli_free_result($result);
 
-            echo '<h1>Welcome </h1>';
-            $result = mysqli_query($connection, $sql);
-
-
-            echo '
-              INSERT HOMEPAGE CONTENT';
-        } else {
-            echo '<p>Login failed! Please try again!</p>';
-            echo '<p><a href="index.php">Login</a></p>';
+            if (count($errors) == 0) {
+                $_SESSION['logged_in'] = true;
+                $_SESSION['user_id'] = $user['user_id'];
+                $_SESSION['email'] = $email;
+                $_SESSION['name'] = $user['name'];
+                header('location: courses/all_courses.php');
+            } else {
+                foreach ($errors as $error) {
+                    echo '<p>' . $error . '</p>';
+                }
+                echo '<p><a href="login.php">Login failed, please try again</a></p>';
+            }
         }
-
-
-        mysqli_close($connection);
         ?>
     </body>
-
 </html> 
 
 

@@ -15,7 +15,7 @@
 
             <table> 
                 <tr>
-                    <td>Username: <input id="username" name="username" type="text" onblur="validateLoginForm()"></td>
+                    <td>Email: <input id="email" name="email" type="text" onblur="validateLoginForm()"></td>
                 </tr>
                 <tr>
                     <td>Password: <input id="password" name="password" type="password" onblur="validateLoginForm()"></td>
