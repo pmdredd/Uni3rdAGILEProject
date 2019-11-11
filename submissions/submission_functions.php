@@ -11,7 +11,7 @@ function getAllSubmissions() {
 }
 
 function createSubmission($coursework_id, $student_id, $mark = null, $hand_in_date, $second_submission) {
-    $grade = getAlphanumericGrade($mark, $second_attempt);
+    $grade = getAlphanumericGrade($mark, $second_submission);
     $query = "INSERT INTO submissions (coursework_id, student_id, mark, hand_in_date, second_submission, grade)
               VALUES (?, ?, ?, ?, ?, ?)";
     DB::run($query, [$coursework_id, $student_id, $mark, $hand_in_date, $second_submission, $grade]);
@@ -30,8 +30,8 @@ function deleteSubmissionById($submission_id) {
     return $course;
 }
 
-function getAlphanumericGrade($mark, $second_attempt) {
-    if ($second_attempt) {
+function getAlphanumericGrade($mark, $second_submission) {
+    if ($second_submission) {
         if ($mark >= 40) {
             return "D3";
         } elseif ($mark >= 37) {
