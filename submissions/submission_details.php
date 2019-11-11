@@ -4,7 +4,6 @@ require_once 'submission_functions.php';
 $submission_id = htmlspecialchars($_GET["id"]);
 $submission = getSubmissionById($submission_id);
 
-
 if (isset($_POST['delete'])) {
     deleteSubmissionById($submission_id);
     header('location: all_submissions.php');
