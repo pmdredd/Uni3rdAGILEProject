@@ -13,7 +13,11 @@ if (isset($_POST['delete'])) {
 echo '<h1>Submission details</h1>';
 if ($submission) {
     echo '<h2>Submission ID: ' . $submission['submission_id'] . '</h2>';
-    echo 'Students name should be here maybe';
+    echo '<p>Students name should be here maybe<p>';
+    echo '<h2>Student ID: ' . $submission['student_id'] . '</h2>';
+    echo '<h2>Mark: ' . $submission['mark'] . '</h2>';
+    echo '<h2>Hand in date: ' . $submission['hand_in_date'] . '</h2>';
+    echo '<h2>Grade: ' . $submission['grade'] . '</h2>';
     echo '<br>';
     echo '<br>';
     echo '<button type="button" onclick="javascript:history.back()">Back</button>';
