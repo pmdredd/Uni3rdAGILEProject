@@ -4,12 +4,10 @@ require_once 'course_functions.php';
 $course_id = htmlspecialchars($_GET["id"]);
 $course = getCourseById($course_id);
 
-
 if(isset($_POST['delete'])){ //check if form was submitted
     deleteCourseById($course_id);
     header('location: all_courses.php');
 }    
-
 
 if ($course) {
     echo '<h1>' . $course['name'] . '</h1>';
