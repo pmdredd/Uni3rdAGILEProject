@@ -10,15 +10,16 @@
         require_once 'database/dbconnection.php'; // $connection
         
         $Mark =  $_POST["Marks"];
-        $Attemp2 = $_POST["AttemptSecond"]
-        
+        $Attemp2 = $_POST["AttemptSecond"];
+        $Student_ID = $_POST["StudentID"];
+        $Course_ID = $_POST["CourseID"];
         
     function get_alphanumeric_grade ($Mark,$Attemp2) {
         
         If ($Attemp2 >= 40) {
-        return "D3"; }
+            return "D3"; }
         elseif if($_POST["Marks"] >= 35) {
-        return "MF"; }
+            return "MF"; }
         elseif if($_POST["Marks"] >= 20) {
             return "CF"; }
         elseif if($_POST["Marks"] >= 1) {
@@ -58,8 +59,10 @@
             return "BF"; }
         elseif if($_POST["Marks"] >= 0) {
             return "0"; }
-    }    
-        $sql = "INSERT INTO MARKS (StudentID,CourseID, Marks, 
+    }
+            
+    function submit_Submission($Student_ID, $Course_ID, $Mark, $Grade){
+    /*    $sql = "INSERT INTO TABLENAME (StudentID,CourseID, Marks, 
             Grade, Attempt, SubmissionDate) VALUES ("
                $_POST["StudentID"] . "', '" .
                $_POST["CourseID"] . "', '" .
@@ -67,7 +70,13 @@
                $Grade . "', " 
               . "CURDATE()"
                .")"    ;
-    
+     */   
+     
+        $submission = DB::run("INSERT INTO TABLENAME (StudentID,CourseID, Marks, 
+            Grade, Attempt, SubmissionDate) VALUES (?,?,?,?,?, CURDATE()", [$Student_ID], [$Course_ID], [$Mark], [$Grade], [$Attemp2])->fetch();
+        return $submission;
+    }
+            
            $query_successful = mysqli_query($connection, $sql);        
         if ($query_successful) {
             echo '<p>Student Marks Sumbitted Sucessfully</p>';
