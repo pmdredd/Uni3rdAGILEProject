@@ -18,47 +18,55 @@
         
         If ($Attemp2 >= 40) {
             return "D3"; }
-        elseif if($_POST["Marks"] >= 35) {
-            return "MF"; }
+        elseif if($_POST["Marks"] >= 37) {
+            return "MF1"; }
+        elseif if($_POST["Marks"] >= 34) {
+            return "MF2"; }
+        elseif if($_POST["Marks"] >= 30) {
+            return "MF3";
         elseif if($_POST["Marks"] >= 20) {
             return "CF"; }
-        elseif if($_POST["Marks"] >= 1) {
-            return "BF";
-        elseif if($_POST["Marks"] >= 0) {
-            return "0"; }
-            
-        $Grade= if($_POST["Marks"] >= 90)  {
+         elseif if($_POST["Marks"] >= 0) {
+            return "BF"; }
+           
+        $Grade= if($_POST["Marks"] >= 95)  {
             return "A1"; }
-        elseif if($_POST["Marks"] >= 80) {
+        elseif if($_POST["Marks"] >= 89) {
             return "A2"; }
-        elseif if($_POST["Marks"] >= 70) {
+        elseif if($_POST["Marks"] >= 83) {
             return "A3"; }
-        elseif if($_POST["Marks"] >= 66) {
+        elseif if($_POST["Marks"] >= 76) {
+            return "A4"; }
+        elseif if($_POST["Marks"] >= 70) {
+            return "A5"; }
+        elseif if($_POST["Marks"] >= 67) {
             return "B1"; }
-        elseif if($_POST["Marks"] >= 63) {
+        elseif if($_POST["Marks"] >= 64) {
             return "B2"; }
         elseif if($_POST["Marks"] >= 60) {
             return "B3"; }
-        elseif if($_POST["Marks"] >= 56) {
+        elseif if($_POST["Marks"] >= 57) {
             return "C1"; }
-        elseif if($_POST["Marks"] >= 53) {
+        elseif if($_POST["Marks"] >= 54) {
             return "C2"; }
         elseif if($_POST["Marks"] >= 50) {
             return "C3"; }
-        elseif if($_POST["Marks"] >= 46) {
+        elseif if($_POST["Marks"] >= 47) {
             return "D1"; }
-        elseif if($_POST["Marks"] >= 43) {
+        elseif if($_POST["Marks"] >= 44) {
             return "D2"; }
         elseif if($_POST["Marks"] >= 40) {
             return "D3"; }
-        elseif if($_POST["Marks"] >= 35) {
-            return "MF"; }
+        elseif if($_POST["Marks"] >= 37) {
+            return "MF1"; }
+        elseif if($_POST["Marks"] >= 34) {
+            return "MF2"; }
+        elseif if($_POST["Marks"] >= 30) {
+            return "MF3";
         elseif if($_POST["Marks"] >= 20) {
             return "CF"; }
-        elseif if($_POST["Marks"] >= 1) {
+         elseif if($_POST["Marks"] >= 0) {
             return "BF"; }
-        elseif if($_POST["Marks"] >= 0) {
-            return "0"; }
     }
             
     function submit_Submission($Student_ID, $Course_ID, $Mark, $Grade){
