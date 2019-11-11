@@ -10,26 +10,29 @@
         require_once 'database/dbconnection.php'; // $connection
         
         $Mark =  $_POST["Marks"];
-        $Attemp2 = $_POST["AttemptSecond"];
+        $Attempt2 = $_POST["AttemptSecond"];
         $Student_ID = $_POST["StudentID"];
         $Course_ID = $_POST["CourseID"];
+        $Grade = get_alphanumeric_grade($Mark, $Attempt2);
         
-    function get_alphanumeric_grade ($Mark,$Attemp2) {
         
-        If ($Attemp2 >= 40) {
-            return "D3"; }
-        elseif if($_POST["Marks"] >= 37) {
-            return "MF1"; }
-        elseif if($_POST["Marks"] >= 34) {
-            return "MF2"; }
-        elseif if($_POST["Marks"] >= 30) {
-            return "MF3";
-        elseif if($_POST["Marks"] >= 20) {
-            return "CF"; }
-         elseif if($_POST["Marks"] >= 0) {
-            return "BF"; }
-           
-        $Grade= if($_POST["Marks"] >= 95)  {
+    function get_alphanumeric_grade ($Mark,$Attempt2) {
+        If ($Attempt2 === true){
+            If ($_POST["Marks"] >= 40) {
+                return "D3"; }
+            elseif if($_POST["Marks"] >= 37) {
+                return "MF1"; }
+            elseif if($_POST["Marks"] >= 34) {
+                return "MF2"; }
+            elseif if($_POST["Marks"] >= 30) {
+                return "MF3";
+            elseif if($_POST["Marks"] >= 20) {
+                return "CF"; }
+             elseif if($_POST["Marks"] >= 0) {
+                return "BF"; }
+        }
+   
+        if($_POST["Marks"] >= 95)  {
             return "A1"; }
         elseif if($_POST["Marks"] >= 89) {
             return "A2"; }
