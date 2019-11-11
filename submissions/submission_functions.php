@@ -36,8 +36,6 @@ function getAlphanumericGrade($mark, $second_attempt) {
             return "D3";
         } elseif ($mark >= 37) {
             return "MF1";
-        } elseif ($mark >= 37) {
-            return "MF1";
         } elseif($mark >= 34) {
             return "MF2";
         } elseif ($mark >= 30) {
