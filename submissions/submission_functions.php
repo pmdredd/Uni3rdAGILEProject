@@ -51,7 +51,7 @@ function getAlphanumericGrade($mark, $second_submission) {
     } else {
         if($mark >= 95)  {
             return "A1";
-        }elseif ($mark >= 89) {
+        } elseif ($mark >= 89) {
             return "A2";
         } elseif ($mark >= 83) {
             return "A3";
@@ -85,7 +85,7 @@ function getAlphanumericGrade($mark, $second_submission) {
             return "MF3";
         } elseif ($mark >= 20) {
             return "CF";
-        }  elseif ($mark >= 0) {
+        } elseif ($mark >= 0) {
             return "BF";
         } else {
         //so we can check if this has failed e.g. if the $mark is below 0 for some reason
