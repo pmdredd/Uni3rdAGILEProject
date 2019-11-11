@@ -8,17 +8,16 @@
     <body>
         <div>Please Add the Student ID, Course ID and Mark out of 100</div>
         <form action="AddMarkPHP.php" method="post">
-        <br><br> Student ID :       
-        <input id="StudentID" type="text" name="StudentID" placeholder="123456789" autofocus="" required>
-        <br><br> Course ID: 
-        <input id="CourseID" type="text" name="CourseID" placeholder="GA30003" required>     
-        <br><br> Marks : 
-        <input id="Marks" type="text" name="Marks" placeholder="100" required>     
+        <br><br> Student ID :
+        <input type="text" name="student_id" placeholder="123456789" autofocus="" required>
+        <br><br> Course ID:
+        <input type="text" name="course_id" placeholder="GA30003" required>     
+        <br><br> Marks :
+        <input type="text" name="marks" placeholder="100" required>     
         <br><br><br>
-        <input id="Submit" type="submit" value="Submit"/>
+        <input type="submit" value="Submit"/>
         </form>
         <br><br><br>
-        <input id="requestback" type="button" value="Back" onclick="window.location.href='SystemHome.html'" /> 
-        <script src="LTSJava.js"></script> <!--Used to define Java functions location -->
+        <!-- <input type="button" value="Back" /> replace with href button  -->
     </body>
 </html>

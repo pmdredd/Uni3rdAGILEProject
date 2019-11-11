@@ -9,7 +9,6 @@
         session_start();
         $errors = array();
 
-
         if (isset($_POST['email']) && isset($_POST['password'])) {
             require_once 'database/dbconnection.php';
 
