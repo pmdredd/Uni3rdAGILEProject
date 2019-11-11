@@ -10,10 +10,10 @@
         <form action="Login.php" method="post">
             <table> 
                 <tr>
-                    <td>Email: <input id="email" name="email" type="text" onblur="validateLoginForm()"></td>
+                    <td>Email: <input name="email" type="text" onblur="validateLoginForm()"></td>
                 </tr>
                 <tr>
-                    <td>Password: <input id="password" name="password" type="password" onblur="validateLoginForm()"></td>
+                    <td>Password: <input name="password" type="password" onblur="validateLoginForm()"></td>
                 </tr>
             </table>      
             <input id="submit" type="Submit" value="Login">

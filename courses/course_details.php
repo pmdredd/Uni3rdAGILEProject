@@ -5,6 +5,7 @@ $course_id = htmlspecialchars($_GET["id"]);
 $course = getCourseById($course_id);
 
 if(isset($_POST['delete'])){ //check if form was submitted
+
     deleteCourseById($course_id);
     header('location: all_courses.php');
 }    
@@ -12,7 +13,7 @@ if(isset($_POST['delete'])){ //check if form was submitted
 if ($course) {
     echo '<h1>' . $course['name'] . '</h1>';
     echo '<br>';
-    echo '<a href="all_courses.php"><button type="button">Back</button></a>';
+    echo '<button type="button" onclick="javascript:history.back()">Back</button>';
     echo '<form action="" method="post">
             <input type="hidden" name="delete" value="' . $course_id . '"/>
             <input type="submit" value="Delete Course">
