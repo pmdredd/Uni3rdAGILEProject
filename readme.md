@@ -22,7 +22,6 @@ Make sure you have the following installed:
 - (Optional) SQLiteBrowser 3+
     - This can be used to view the database (database/courseworkapp.db). Download it [here](https://sqlitebrowser.org/dl/)
 
-
 Download the master branch by running the following in Git Bash/PowerShell:  
  `git clone https://github.com/Lairdd1989/Uni3rdAGILEProject.git`
 
@@ -35,13 +34,11 @@ Install PHPUnit by running:
 If you have PHP installed (via XAMPP) then you can run the following command to get a local version of the project running:  
   `php -S localhost:8000`
 
-
 ### Running a test
 You can run a specific test by running that test file with PHPUnit. You can use the example.php and tests/example_test.php 
 I prepared earlier. To run the test, execute the following command:  
 `.\vendor\bin\phpunit .\tests\example_test.php`  
 The first part of the command calls the PHPUnit executable, and the second part of the command is where the test file is located.
-
 
 ### Application structure
 The database can be found at database/courseworkapp.db.  
@@ -50,6 +47,3 @@ composer.json is the file Composer uses to determine dependencies as well as bas
 composer.lock makes sure the dependencies installed by Composer are consistent. **You can ignore this.**
 example.php is a small php script with some short functions that show how the database class can be used to run queries (DB::run()).
 The tests/example_test.php file has the tests for the functions in the example.php file.
-  
-
-

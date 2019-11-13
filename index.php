@@ -1,5 +1,4 @@
-
-
+<!DOCTYPE html>
 <html>
     <head>
         <title>Login</title>
@@ -8,11 +7,7 @@
     </head>
     <body>
         <h1>My Dundee Portal</h1>
-
-
-        <form action="login.php" method="post">
-
-
+        <form action="Login.php" method="post">
             <table> 
                 <tr>
                     <td>Email: <input name="email" type="text" onblur="validateLoginForm()"></td>
@@ -21,18 +16,8 @@
                     <td>Password: <input name="password" type="password" onblur="validateLoginForm()"></td>
                 </tr>
             </table>      
-            <input type="submit" value="login">
-
+            <input id="submit" type="Submit" value="Login">
         </form>
         <p id="validationStatus"></p>
-
-
     </body>
 </html>
-
-
-
-
-
-
-
