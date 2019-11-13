@@ -7,7 +7,7 @@
     </head>
     <body>
         <h1>My Dundee Portal</h1>
-        <form action="Login.php" method="post">
+        <form action="login.php" method="post">
             <table> 
                 <tr>
                     <td>Email: <input name="email" type="text" onblur="validateLoginForm()"></td>
