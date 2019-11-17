@@ -22,7 +22,6 @@ function getStudentById($student_id) {
 }
 
 function deleteStudentById($student_id) {
-    getStudentById($student_id);
     $query = "DELETE FROM students WHERE student_id=?";
     $student = DB::run($query, [$student_id]);
     return $student;
