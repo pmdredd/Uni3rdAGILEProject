@@ -13,6 +13,7 @@
 ---
 
 ### Setting up the project
+#### Requirements
 Make sure you have the following installed:
 
 - PHP 7.2+
@@ -27,6 +28,7 @@ Make sure you have the following installed:
   
 Open the folder you want to keep the project in e.g. Desktop/code, then right-click and select the option 'Git Bash here' (or open the same folder in PowerShell)  
 
+#### Steps
 Download the master branch by running the following in Git Bash/PowerShell:  
  `git clone https://github.com/Lairdd1989/Uni3rdAGILEProject.git`
 
