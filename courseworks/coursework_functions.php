@@ -10,9 +10,9 @@ function getAllCourseworks() {
     return $courseworks;
 }
 
-function createCoursework($name, $coursework_id, $deadline, $credit_weight, $feedback_due_date) {
-    $query = "INSERT INTO courseworks (name, coursework_id, deadline, credit_weight, feedback_due_date) VALUES (?, ?, ?, ?, ?)";
-    DB::run($query, [$name]);
+function createCoursework($name, $course_id, $deadline, $credit_weight, $feedback_due_date) {
+    $query = "INSERT INTO courseworks (name, course_id, deadline, credit_weight, feedback_due_date) VALUES (?, ?, ?, ?, ?)";
+    DB::run($query, [$name, $course_id, $deadline, $credit_weight, $feedback_due_date]);
 }
 
 function getCourseworkById($coursework_id) {
