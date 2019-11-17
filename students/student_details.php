@@ -24,6 +24,7 @@ if ($student) {
     echo '<hr>';
     echo "<h1>This student's submissions</h1>";
     if ($submissions) {
+        echo '<p>Average Mark: ' . getAverageMark($student_id) . '</p>';
         foreach ($submissions as $submission) {
             echo '<h3>Coursework: ' . $submission['coursework_id']  .'<h3>
                   <p>Hand in Date: ' . $submission['hand_in_date']  . '</p>
