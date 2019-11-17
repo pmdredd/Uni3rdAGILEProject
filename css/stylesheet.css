@@ -36,8 +36,8 @@ body {
 .navbar {
 
 	padding: 10px 4px;
-    overflow: hidden;
-    background-color: #ffffff;
+    	overflow: hidden;
+    	background-color: #ffffff;
 }
 
 /* Style the Navbar Links */
@@ -45,22 +45,22 @@ body {
 	
 	font-size: 100%;
 	font-family: Arial;
-    float: left;
-    display: block;
+    	float: left;
+    	display: block;
 	color: #464646;
-    text-align: center;
-    padding: 10px 10px;
-    text-decoration: none;
+    	text-align: center;
+    	padding: 10px 10px;
+    	text-decoration: none;
 }
 
 /* Change color on hover */
 .navbar a:hover {
 	
-    color: #458BA0;
+    	color: #458BA0;
 }
 
 img {
-    float: left;
+    	float: left;
 	clear: left;
 	padding: 10px 10px;
 }
@@ -70,44 +70,44 @@ img {
 	
 	font-size: 100%;
 	font-family: Arial;
-    background-color: #FFFAF4;
+    	background-color: #FFFAF4;
 	color: #464646;
-    padding: 50px;
-    height: 600px;
+    	padding: 50px;
+    	height: 600px;
 
 }
 
-  /* Style the Submit buttons */
+/* Style the Submit buttons */
   input[type=submit] {
-    width: 10%;
-    background-color: rgb(102, 132, 243);
-    color: black;
-    padding: 10px 1px;
-    margin: auto;
-    text-align: center;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
+    	width: 10%;
+    	background-color: rgb(102, 132, 243);
+    	color: black;
+    	padding: 10px 1px;
+    	margin: auto;
+    	text-align: center;
+    	border: none;
+    	border-radius: 4px;
+    	cursor: pointer;
+}
   
   input[type=submit]:hover {
-    background-color: #458ba0;
-  }
+    	background-color: #458ba0;
+}
   
   div {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-  }
+    	border-radius: 5px;
+    	background-color: #f2f2f2;
+    	padding: 20px;
+}
 
 /* Style the Footer Division */
 .footer {
 	
 	font-size: 85%;
 	font-family: Arial;
-    background-color: #EBE9E7;
+    	background-color: #EBE9E7;
 	color: #464646;
-    padding: 10px;
+    	padding: 10px;
 	height: 50px;
 	
 }
