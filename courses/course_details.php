@@ -1,5 +1,6 @@
 <?php
 require_once 'course_functions.php';
+require_once '../header.html';
 
 $course_id = htmlspecialchars($_GET["id"]);
 $course = getCourseById($course_id);

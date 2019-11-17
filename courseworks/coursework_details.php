@@ -1,5 +1,6 @@
 <?php
 require_once 'coursework_functions.php';
+require_once '../header.html';
 
 $coursework_id = htmlspecialchars($_GET["id"]);
 $coursework = getCourseworkById($coursework_id);
