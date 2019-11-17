@@ -28,9 +28,9 @@ if (isset($_POST['name'])) {
     }
 
     if (count($errors) == 0) {
-        var_dump(createCoursework($name, $course_id, $deadline, $credit_weight, $feedback_due_date));
-        // $_SESSION['success'] = true;
-        // header('location: all_courseworks.php');
+        createCoursework($name, $course_id, $deadline, $credit_weight, $feedback_due_date);
+        $_SESSION['success'] = true;
+        header('location: all_courseworks.php');
     } else {
         foreach ($errors as $error) {
             echo '<p>' . $error . '</p>';
