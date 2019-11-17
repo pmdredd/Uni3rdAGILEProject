@@ -24,7 +24,6 @@ function getSubmissionById($submission_id) {
 }
 
 function deleteSubmissionById($submission_id) {
-    getSubmissionById($submission_id);
     $query = "DELETE FROM submissions WHERE submission_id=?";
     $submission = DB::run($query, [$submission_id]);
     return $course;
