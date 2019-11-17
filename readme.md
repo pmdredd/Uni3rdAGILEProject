@@ -24,7 +24,7 @@ Make sure you have the following installed:
       It can be downloaded for Windows [here](https://git-scm.com/downloads)
 - (Optional) SQLiteBrowser 3+
     - This can be used to view the database (database/courseworkapp.db). Download it [here](https://sqlitebrowser.org/dl/)
-
+  
 Open the folder you want to keep the project in e.g. Desktop/code, then right-click and select the option 'Git Bash here' (or open the same folder in PowerShell)  
 
 Download the master branch by running the following in Git Bash/PowerShell:  
