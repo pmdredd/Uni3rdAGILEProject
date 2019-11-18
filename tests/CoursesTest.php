@@ -3,7 +3,7 @@
 use PHPUnit\Framework\TestCase;
 require_once 'courses/course_functions.php';
 
-final class CourseTest extends TestCase {
+final class CoursesTest extends TestCase {
 
     protected function setUp(): void {
         DB::run("INSERT INTO courses (name) VALUES (?)", ['test_course']);
