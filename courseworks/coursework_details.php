@@ -22,7 +22,7 @@ if ($coursework) {
     echo '<button type="button" onclick="javascript:history.back()">Back</button>';
     echo '<br>';
     echo '<hr>';
-    echo '<h1>Submissions for this Coursework</h1>';
+    echo '<h1>Submissions for this Coursework: </h1>';
     if ($submissions) {
         foreach ($submissions as $submission) {
             echo "<a href='/submissions/submission_details.php?id=" . $submission['submission_id'] . "'> Student: ". $submission['student_name'] . "</a>";

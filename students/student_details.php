@@ -24,7 +24,7 @@ if ($student) {
     echo '<button type="button" onclick="javascript:history.back()">Back</button>';
     echo '<br>';
     echo '<hr>';
-    echo "<h1>This student's submissions</h1>";
+    echo "<h1>This student's submissions: </h1>";
     if ($submissions) {
         foreach ($submissions as $submission) {
             echo '<h3>Coursework: ' . $submission['coursework_id']  .'<h3>
