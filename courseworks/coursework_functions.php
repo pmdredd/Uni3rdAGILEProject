@@ -26,3 +26,9 @@ function deleteCourseworkById($coursework_id) {
     $coursework = DB::run($query, [$coursework_id]);
     return $coursework;
 }
+
+function getSubmissionsByCourseworkId($coursework_id) {
+    $query = "SELECT * FROM submissions WHERE coursework_id=?";
+    $submissions = DB::run($query, [$coursework_id])->fetchAll(PDO::FETCH_ASSOC);
+    return $submissions;
+}

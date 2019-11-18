@@ -21,11 +21,11 @@ if ($course) {
         </form>'; 
     echo '<button type="button" onclick="javascript:history.back()">Back</button>';
     echo '<br>';
-    echo '<br>';
+    echo '<hr>';
     echo '<h1>Courseworks for this Course</h1>';
     if ($courseworks) {
         foreach ($courseworks as $coursework) {
-            echo "<a href='../coursework_details.php?id=" . $coursework['coursework_id'] . "'>" . $coursework['name'] . "</a>";
+            echo "<a href='/courseworks/coursework_details.php?id=" . $coursework['coursework_id'] . "'>" . $coursework['name'] . "</a>";
             echo "</br>";
         }
     } else {
