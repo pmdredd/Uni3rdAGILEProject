@@ -42,15 +42,17 @@ If you have PHP installed (via XAMPP) then you can run the following command to 
   `php -S localhost:8000`
 
 ### Running a test
-You can run a specific test by running that test file with PHPUnit. You can use the example.php and tests/example_test.php 
-I prepared earlier. To run the test, execute the following command:  
-`.\vendor\bin\phpunit .\tests\example_test.php`  
-The first part of the command calls the PHPUnit executable, and the second part of the command is where the test file is located.
+You can run all tests by executing the following command:  
+`.\vendor\bin\phpunit .\tests\`  
+The first part of the command calls the PHPUnit executable, and the second part of the command is the directory where the test files are located.
+To run a specific test, give a specific test file to PHPUnit e.g.
+`.\vendor\bin\phpunit .\tests\StudentsTest.php`
 
 ### Application structure
-The database can be found at database/courseworkapp.db.  
-The tests directory holds all the tests for the app, including the example test.  
+The sqlite3 database file can be found at /database/courseworkapp.db.  
+The /tests directory holds all the tests for the app.  
+JS and CSS files can be found in the /js and /css folders.  
 composer.json is the file Composer uses to determine dependencies as well as basic info about the project. **You can ignore this.**  
 composer.lock makes sure the dependencies installed by Composer are consistent. **You can ignore this.**  
-example.php is a small php script with some short functions that show how the database class can be used to run queries (DB::run()).  
-The tests/example_test.php file has the tests for the functions in the example.php file.  
+  
+The files for each feature are found in that feature's directory, for example all files relating to the Students are found in /students. These directories usually contain one 'main' PHP file that define all the necessary functions, and then other PHP files that only use these functions and display data.

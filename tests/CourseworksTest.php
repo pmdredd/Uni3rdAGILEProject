@@ -13,7 +13,7 @@ final class CourseworksTest extends TestCase {
      * This will be run before each test method.
      */
     protected function setUp(): void {
-        DB::run("INSERT INTO courses (course_id, name) VALUES (0, 'test coursework')");
+        DB::run("INSERT INTO courses (course_id, name) VALUES (0, 'test course')");
         DB::run("INSERT INTO courseworks (name, course_id, deadline, credit_weight, feedback_due_date) 
                  VALUES ('test coursework', 0, '2019-12-12', 10, '2019-12-21')");
     }
@@ -29,8 +29,8 @@ final class CourseworksTest extends TestCase {
     }
 
     /**
-     * Create a new coursework using the createCourseWork() function, then make sure that the name
-     * of the newly created coursework is the same as the latest coursework in the db.
+     * Create a new coursework using the createCourseWork() function, then make sure that the details
+     * of the newly created coursework are the same as the latest coursework record in the db.
      */
     public function testCreateCourse() {
         createCoursework('test coursework', 0, '2019-12-12', 10, '2019-12-21');
@@ -79,5 +79,6 @@ final class CourseworksTest extends TestCase {
     */
     protected function tearDown(): void {
         DB::run("DELETE FROM courseworks WHERE name like 'test coursework'");
+        DB::run("DELETE FROM courses WHERE name LIKE 'test course'");
     }
 }

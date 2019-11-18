@@ -27,8 +27,8 @@ final class CoursesTest extends TestCase {
     }
 
     /**
-     * Create a new course using the createCourse() function, then make sure that the name
-     * of the newly created course is the same as the latest course in the db.
+     * Create a new course using the createCourse() function, then make sure that the details
+     * of the newly created course are the same as the latest course record in the db.
      */
     public function testCreateCourse() {
         createCourse("test course");
