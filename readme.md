@@ -52,7 +52,7 @@ To run a specific test, give a specific test file to PHPUnit e.g.
 The sqlite3 database file can be found at /database/courseworkapp.db.  
 The /tests directory holds all the tests for the app.  
 JS and CSS files can be found in the /js and /css folders.  
-composer.json is the file Composer uses to determine dependencies as well as basic info about the project. **You can ignore this.**  
-composer.lock makes sure the dependencies installed by Composer are consistent. **You can ignore this.**  
+composer.json is the file Composer uses to determine dependencies as well as other info about the project e.g. authors. **You can ignore this.**  
+composer.lock makes sure the dependencies installed by Composer are consistent for everyone. **You can ignore this.**  
   
-The files for each feature are found in that feature's directory, for example all files relating to the Students are found in /students. These directories usually contain one 'main' PHP file that define all the necessary functions, and then other PHP files that only use these functions and display data.
+The files for each feature are found in that feature's directory, for example all files relating to the Students are found in /students. These directories usually contain one 'main' PHP file that define all the necessary functions (e.g. student_functions.php), and then other PHP files that only use these functions and display data (e.g. all_students.php).
