@@ -5,12 +5,10 @@ $student_id = htmlspecialchars($_GET["id"]);
 $student = getStudentById($student_id);
 $submissions = getSubmissionsByStudentId($student_id);
 
-
 if (isset($_POST['delete'])) {
     deleteStudentById($student_id);
     header('location: all_students.php');
 }    
-
 
 if ($student) {
     echo '<h1>' . $student['name'] . '</h1>';
