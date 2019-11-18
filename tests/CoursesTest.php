@@ -23,8 +23,6 @@ final class CoursesTest extends TestCase {
         $test_course = DB::run("SELECT * FROM courses ORDER BY course_id DESC LIMIT 1")->fetch(PDO::FETCH_ASSOC);
 
         $this->assertSame("test_course", $test_course["name"]);
-
-        DB::run("DELETE FROM courses WHERE course_id = ?", [$test_course['course_id']]);
     }
 
     // create a new course called 'test_course', assert that the lastest entry 
