@@ -20,7 +20,6 @@ final class CoursesTest extends TestCase {
      * Test the getAllCourses() function which should return all courses from the courses table.
      * This implementation of the test will only actually test that *something* is returned,
      * (i.e. that it returns something that is not empty), not that the correct data is returned.
-     *
      */
     public function testGetAllCourses() {
         $courses = getAllCourses();
@@ -67,7 +66,7 @@ final class CoursesTest extends TestCase {
     }
 
     /**
-     * Remove the course on which the test methods are run.
+     * Remove the test course from the db.
      * This is run after every test method.
      */
     protected function tearDown(): void {
