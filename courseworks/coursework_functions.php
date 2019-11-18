@@ -29,7 +29,7 @@ function deleteCourseworkById($coursework_id) {
 
 function getSubmissionsByCourseworkId($coursework_id) {
     
-    $query = "SELECT submission_id, hand_in_date, name, mark, grade FROM submissions sub
+    $query = "SELECT submission_id, hand_in_date, name as student_name, mark, grade FROM submissions sub
               JOIN students stu ON sub.student_id = stu.student_id
               WHERE coursework_id = ?";
     $submissions = DB::run($query, [$coursework_id])->fetchAll(PDO::FETCH_ASSOC);

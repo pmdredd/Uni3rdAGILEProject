@@ -12,19 +12,22 @@ if (isset($_POST['delete'])) {
 
 echo '<h1>Submission details</h1>';
 if ($submission) {
-    echo '<h2>Submission ID: ' . $submission['submission_id'] . '</h2>';
-    echo '<p>Students name should be here maybe<p>';
-    echo '<h2>Student ID: ' . $submission['student_id'] . '</h2>';
-    echo '<h2>Mark: ' . $submission['mark'] . '</h2>';
-    echo '<h2>Hand in date: ' . $submission['hand_in_date'] . '</h2>';
-    echo '<h2>Grade: ' . $submission['grade'] . '</h2>';
+    echo '<h2>Student: ' . $submission['student_name'] . '</h2>';
+    echo '<p>Mark: ' . $submission['mark'] . '</p>';
+    echo '<p>Hand in date: ' . $submission['hand_in_date'] . '</p>';
+    echo '<p>Grade: ' . $submission['grade'] . '</p>';
+    if ($submission['second_submission']) {
+        echo '<p>Second submission?: Yes</p>';
+    } else {
+        echo '<p>Second submission?: No</p>';
+    }
     echo '<br>';
     echo '<br>';
-    echo '<button type="button" onclick="javascript:history.back()">Back</button>';
     echo '<form action="" method="post">
             <input type="hidden" name="delete" value="' . $submission_id . '"/>
             <input type="submit" value="Delete Submission">
         </form>'; 
+    echo '<button type="button" onclick="javascript:history.back()">Back</button>';
     echo '<br>';
     echo '<br>';
 } else {

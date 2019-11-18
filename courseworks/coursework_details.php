@@ -25,7 +25,7 @@ if ($coursework) {
     echo '<h1>Submissions for this Coursework</h1>';
     if ($submissions) {
         foreach ($submissions as $submission) {
-            echo "<a href='/submissions/submission_details.php?id=" . $submission['submission_id'] . "'> Student: ". $submission['name'] . "</a>";
+            echo "<a href='/submissions/submission_details.php?id=" . $submission['submission_id'] . "'> Student: ". $submission['student_name'] . "</a>";
             if ($submission['mark']) {
                 echo '<p>Mark: ' . $submission['mark'] . '</p>';
                 echo '<p>Grade: ' . $submission['grade'] . '</p>';
