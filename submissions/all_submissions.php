@@ -14,8 +14,6 @@ if (isset($_SESSION['success'])) {
 
 $submissions = getAllSubmissions();
 
-// we should try and group by coursework_id e.g. we first get a list of all submissions for Agile Development,
-// then a list of all submissions for Java Programming, then Business Systems, etc. see PDO::FETCH_GROUP
 echo '<h1>Submissions</h1>';
 if ($submissions) {
     foreach ($submissions as $submission) {
