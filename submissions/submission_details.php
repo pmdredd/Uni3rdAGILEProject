@@ -1,5 +1,6 @@
 <?php
 require_once 'submission_functions.php';
+require_once '../header.html';
 
 $submission_id = htmlspecialchars($_GET["id"]);
 $submission = getSubmissionById($submission_id);
