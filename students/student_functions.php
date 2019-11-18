@@ -26,3 +26,15 @@ function deleteStudentById($student_id) {
     $student = DB::run($query, [$student_id]);
     return $student;
 }
+
+function getSubmissionsByStudentId($student_id) {
+    $query = "SELECT * FROM submissions WHERE student_id=?";
+    $submissions = DB::run($query, [$student_id])->fetchAll(PDO::FETCH_ASSOC);
+    return $submissions;
+}
+
+function getAverageMark($student_id) {
+    $query = "SELECT AVG(mark) FROM submissions WHERE student_id=?";
+    $avg_mark = DB::run($query, [$student_id])->fetchColumn();
+    return $avg_mark;
+}
