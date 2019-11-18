@@ -1,6 +1,6 @@
 # GA30003 Agile Project
-##### Project for 3rd Year uni course on AGILE   
-##### Requirement - To provide a Student Record System allowing the tracking of coursework submissions, assessment marks and averages  
+#### Project for 3rd Year uni course on AGILE   
+#### Requirement - To provide a Student Record System allowing the tracking of coursework submissions, assessment marks and averages  
 
 ---
 
