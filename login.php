@@ -1,6 +1,4 @@
 <?php
-require_once '../header.html';
-
 session_start();
 $errors = array();
 
