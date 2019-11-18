@@ -5,6 +5,10 @@ require_once 'courses/course_functions.php';
 
 final class CourseTest extends TestCase {
 
+    protected function setUp(): void {
+        DB::run("INSERT INTO courses (name) VALUES (?)", ['test_course']);
+    }
+
     // will only actually check if the courses table is empty,
     // not if the rows it returns are correct (e.g. wrong table)
     public function testGetAllCourses() {
@@ -27,18 +31,14 @@ final class CourseTest extends TestCase {
     // into the courses table has the same course_id that getCourseById returns,
     // then remove that entry
     public function testGetCourseById() {
-        DB::run("INSERT INTO courses (name) VALUES (?)", ['test_course']);
         $test_course = DB::run("SELECT * FROM courses WHERE name LIKE 'test_course'")->fetch(PDO::FETCH_ASSOC);
         $test_course_id = $test_course['course_id'];
         $course = getCourseById($test_course_id);
 
         $this->assertSame($test_course_id, $course['course_id']);
-
-        DB::run("DELETE FROM courses WHERE course_id =?", [$test_course_id]);
     }
 
     public function testDeleteCourseById() {
-        DB::run("INSERT INTO courses (name) VALUES (?)", ['test_course']);
         $test_course = DB::run("SELECT * FROM courses WHERE name LIKE 'test_course'")->fetch(PDO::FETCH_ASSOC);
         $test_course_id = $test_course['course_id'];
         // the record should exist, the number of columns in count should be 1
@@ -50,6 +50,9 @@ final class CourseTest extends TestCase {
         // the record should be deleted, the number of columns in count should be 0
         $recordExists = DB::run("SELECT COUNT(1) FROM courses WHERE course_id = ?", [$test_course_id])->fetchColumn();
         $this->assertEquals(0, $recordExists);
-        DB::run("DELETE FROM courses WHERE course_id =?", [$test_course_id]);
+    }
+
+    protected function tearDown(): void {
+        DB::run("DELETE FROM courses WHERE name like 'test_course'");
     }
 }
