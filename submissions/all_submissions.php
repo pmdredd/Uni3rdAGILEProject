@@ -14,10 +14,12 @@ if (isset($_SESSION['success'])) {
 
 $submissions = getAllSubmissions();
 
+echo '<h1>Submissions</h1>';
 if ($submissions) {
     foreach ($submissions as $submission) {
-        echo "<a href='submission_details.php?id=" . $submission['submission_id'] . "'> Student ID: " . $submission['student_id'] 
-              . "  Mark: " . $submission['mark'] . "  Hand in date: " . $submission['hand_in_date'] . "</a>\n";
+        echo '<h3>Coursework: ' . $submission['coursework_name'] . '</h3>';
+        echo "<a href='submission_details.php?id=" . $submission['submission_id'] . "'> Student : " . $submission['student_name'] 
+              . "  Hand in date: " . $submission['hand_in_date'] . "</a>\n";
         echo "</br>";
     }
 } else {

@@ -13,7 +13,7 @@ if (isset($_SESSION['success'])) {
 }
 
 $courseworks = getAllCourseworks();
-
+echo '<h1>Courseworks</h1>';
 if ($courseworks) {
     foreach ($courseworks as $coursework) {
         echo "<a href='coursework_details.php?id=" . $coursework['coursework_id'] . "'> Coursework Name: " . $coursework['name'] . "</a>\n";
