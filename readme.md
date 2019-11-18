@@ -1,10 +1,10 @@
 # GA30003 Agile Project
-### Project for 3rd Year uni course on AGILE
-#### Client - Kate Ward (GA Civil Engineering Lecturer)
-##### Requirement - To provide a Student Record System allowing the tracking of coursework submissions, assessment marks and averages
+Project for 3rd Year uni course on AGILE  
+Client - Kate Ward (GA Civil Engineering Lecturer)  
+Requirement - To provide a Student Record System allowing the tracking of coursework submissions, assessment marks and averages  
 
 ## Team 4
-## Members
+### Members
 * Stuart Anderson - Communications
 * Derek Brankin - Scrum master
 * Jack Bremner - Developer
@@ -41,7 +41,7 @@ Install PHPUnit by running:
 If you have PHP installed (via XAMPP) then you can run the following command to get a local version of the project running:  
   `php -S localhost:8000`
 
-### Running a test
+### Running the tests
 You can run all tests by executing the following command:  
 `.\vendor\bin\phpunit .\tests\`  
 The first part of the command calls the PHPUnit executable, and the second part of the command is the directory where the test files are located.
