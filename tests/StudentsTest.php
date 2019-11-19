@@ -9,11 +9,15 @@ require_once 'students/student_functions.php';
 final class StudentsTest extends TestCase {
 
     /**
-     * Create the test student on which the test methods are run.
+     * Create the test student and two test submissions for that student, on which the test methods are run.
      * This will be run before each test method.
      */
     protected function setUp(): void {
-        DB::run("INSERT INTO students (name) VALUES ('test student')");
+        DB::run("INSERT INTO students (student_id, name) VALUES (0, 'test student')");
+        DB::run("INSERT INTO submissions (coursework_id, student_id, mark, hand_in_date, second_submission, grade)
+                 VALUES (1, 0, 40, '2019-12-12', 0, 'D3')");
+        DB::run("INSERT INTO submissions (coursework_id, student_id, mark, hand_in_date, second_submission, grade)
+                 VALUES (1, 0, 80, '2019-12-12', 0, 'A4')");
     }
 
     /**
@@ -42,8 +46,7 @@ final class StudentsTest extends TestCase {
      * student returned by the getStudentById() function.
      */
     public function testGetStudentById() {
-        $test_student = DB::run("SELECT * FROM students WHERE name LIKE 'test student'")->fetch(PDO::FETCH_ASSOC);
-        $test_student_id = $test_student['student_id'];
+        $test_student_id =  DB::run("SELECT * FROM students WHERE student_id=0")->fetchColumn();
         $student = getStudentById($test_student_id);
 
         $this->assertSame($test_student_id, $student['student_id']);
@@ -54,16 +57,24 @@ final class StudentsTest extends TestCase {
      * then run the deleteStudentById() method and assert that the record has been deleted
      */
     public function testDeleteStudentById() {
-        $test_student = DB::run("SELECT * FROM students WHERE name LIKE 'test student'")->fetch(PDO::FETCH_ASSOC);
-        $test_student_id = $test_student['student_id'];
-        $recordExists = DB::run("SELECT COUNT(1) FROM students WHERE student_id = ?", [$test_student_id])->fetchColumn();
+        $recordExists = DB::run("SELECT COUNT(1) FROM students WHERE student_id = 0")->fetchColumn();
 
         $this->assertEquals(1, $recordExists);
-        deleteStudentById($test_student_id);
+        deleteStudentById(0);
 
-        $recordExists = DB::run("SELECT COUNT(1) FROM students WHERE student_id = ?", [$test_student_id])->fetchColumn();
+        $recordExists = DB::run("SELECT COUNT(1) FROM students WHERE student_id = 0")->fetchColumn();
         $this->assertEquals(0, $recordExists);
     }
+
+    /**
+     * Assert that getAverageMark() function returns 60, as the two test submissions added in setUp() have an average mark of 60.
+     */
+    public function testGetAverageMark() {
+        $testAvgMark = getAverageMark(0);
+
+        $this->assertEquals(60, $testAvgMark);
+    }
+
 
     /**
      * Remove the test course from the db.
@@ -71,5 +82,6 @@ final class StudentsTest extends TestCase {
      */
     protected function tearDown(): void {
         DB::run("DELETE FROM students WHERE name LIKE 'test student'");
+        DB::run("DELETE FROM submissions WHERE student_id=0");
     }
 }
