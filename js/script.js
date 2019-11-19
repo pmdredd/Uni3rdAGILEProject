@@ -1,16 +1,13 @@
 /*
-
     Team 4   
     GA30003: Assignment 1 (Student Records System)
     November 2019
 
     Page name:  script.js
-
 */
 
 /*The following function validates new student registration details for sending on to server
 This function applies to the page 'registerStudent.html' */
-
 function registerStudent() {
 
     var student_id = document.getElementById("student_id").value;
