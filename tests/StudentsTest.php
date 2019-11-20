@@ -75,7 +75,6 @@ final class StudentsTest extends TestCase {
         $this->assertEquals(60, $testAvgMark);
     }
 
-
     /**
      * Remove the test course from the db.
      * This is run after every test method.
