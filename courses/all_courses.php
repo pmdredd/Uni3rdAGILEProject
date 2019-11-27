@@ -15,6 +15,9 @@ if (isset($_SESSION['success'])) {
 $courses = getAllCourses();
 
 echo '<h1>Courses</h1>';
+echo "<a href='create_course.html'>Create Course</a>\n";
+echo '<br>';
+echo '<br>';
 if ($courses) {
     foreach ($courses as $course) {
         echo "<a href='course_details.php?id=" . $course['course_id'] . "'> Course Name: " . $course['name'] . "</a>\n";
