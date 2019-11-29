@@ -14,6 +14,9 @@ if (isset($_SESSION['success'])) {
 
 $courseworks = getAllCourseworks();
 echo '<h1>Courseworks</h1>';
+echo "<a href='create_coursework.html'>Create Coursework</a>\n";
+echo '<br>';
+echo '<br>';
 if ($courseworks) {
     foreach ($courseworks as $coursework) {
         echo "<a href='coursework_details.php?id=" . $coursework['coursework_id'] . "'> Coursework Name: " . $coursework['name'] . "</a>\n";

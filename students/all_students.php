@@ -15,6 +15,9 @@ if (isset($_SESSION['success'])) {
 $students = getAllStudents();
 
 echo '<h1>Students</h1>';
+echo "<a href='register_student.html'>Register Student</a>\n";
+echo '<br>';
+echo '<br>';
 if ($students) {
     foreach ($students as $student) {
         echo "<a href='student_details.php?id=" . $student['student_id'] . "'> Student Name: " . $student['name'] . "</a>\n";

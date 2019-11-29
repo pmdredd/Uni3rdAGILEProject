@@ -7,7 +7,7 @@ $errors = array();
 
 if (isset($_SESSION['success'])) {
     if ($_SESSION['success'] == true) {
-        echo "<script type='text/javascript'>alert('The Coursework was sucessfully submitted');</script>";
+        echo "<script type='text/javascript'>alert('The Submission was sucessfully created');</script>";
         $_SESSION['success'] = false;
     }
 }
@@ -15,6 +15,9 @@ if (isset($_SESSION['success'])) {
 $submissions = getAllSubmissions();
 
 echo '<h1>Submissions</h1>';
+echo "<a href='create_submission.html'>Create Submission</a>\n";
+echo '<br>';
+echo '<br>';
 if ($submissions) {
     foreach ($submissions as $submission) {
         echo '<h3>Coursework: ' . $submission['coursework_name'] . '</h3>';
