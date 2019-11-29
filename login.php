@@ -18,7 +18,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         $_SESSION['user_id'] = $user['user_id'];
         $_SESSION['email'] = $email;
         $_SESSION['name'] = $user['name'];
-        header('location: courses/all_courses.php');
+        header('location: home.php');
     } else {
         foreach ($errors as $error) {
             echo '<p>' . $error . '</p>';
