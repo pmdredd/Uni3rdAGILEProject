@@ -15,7 +15,7 @@ if (isset($_SESSION['success'])) {
 $courses = getAllCourses();
 
 echo '<h1>Courses</h1>';
-echo "<a href='create_course.html'>Create Course</a>\n";
+echo "<a href='create_course_form.php'>Create Course</a>\n";
 echo '<br>';
 echo '<br>';
 if ($courses) {
