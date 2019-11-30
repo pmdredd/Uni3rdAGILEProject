@@ -22,6 +22,7 @@ if ($student) {
             <input type="submit" value="Delete Student">
         </form>'; 
     echo '<button type="button" onclick="javascript:history.back()">Back</button>';
+    echo '<a href=edit_student_form.php?id=' . $student_id . '><button>Edit Student</button></a>';  
     echo '<br>';
     echo '<hr>';
     echo "<h1>This student's submissions: </h1>";
