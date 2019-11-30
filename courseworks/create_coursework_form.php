@@ -10,6 +10,7 @@ $courses = getAllCourses();
     <input name="name" type="text" placeholder="Enter the course's name" required>
     <br>
     <select name='course' required>
+    <option disabled selected value></option>
     <?php foreach ($courses as $course) {
         echo "<option value='" . $course['course_id'] . "'>" . $course['name'] . "</option>";
     }
