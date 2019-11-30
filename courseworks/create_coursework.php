@@ -11,9 +11,9 @@ if (isset($_POST['name'])) {
     if (empty($name)) {
         array_push($errors, "Coursework name is required");
     }
-    $course_id = $_POST['course_id'];
+    $course_id = $_POST['course'];
     if (empty($course_id)) {
-        array_push($errors, "A related Course ID is required");
+        array_push($errors, "A related Course is required");
     }
     $deadline = $_POST['deadline'];
     if (empty($deadline)) {

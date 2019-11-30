@@ -14,7 +14,7 @@ if (isset($_SESSION['success'])) {
 
 $courseworks = getAllCourseworks();
 echo '<h1>Courseworks</h1>';
-echo "<a href='create_coursework.html'>Create Coursework</a>\n";
+echo "<a href='create_coursework_form.php'>Create Coursework</a>\n";
 echo '<br>';
 echo '<br>';
 if ($courseworks) {
