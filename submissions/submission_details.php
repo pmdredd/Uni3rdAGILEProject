@@ -27,6 +27,7 @@ if ($submission) {
             <input type="hidden" name="delete" value="' . $submission_id . '"/>
             <input type="submit" value="Delete Submission">
         </form>'; 
+    echo '<a href=edit_submission_form.php?id=' . $submission_id . '><button>Edit Submission</button></a>';  
     echo '<button type="button" onclick="javascript:history.back()">Back</button>';
     echo '<br>';
     echo '<br>';
