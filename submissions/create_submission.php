@@ -5,11 +5,11 @@ require_once '../header.html';
 session_start();
 $errors = array();
 
-if (isset($_POST['coursework_id']) && isset($_POST['student_id'])
+if (isset($_POST['coursework']) && isset($_POST['student'])
     && isset($_POST['mark']) && isset($_POST['hand_in_date'])) {
 
-    $coursework_id = $_POST['coursework_id'];
-    $student_id = $_POST['student_id'];
+    $coursework_id = $_POST['coursework'];
+    $student_id = $_POST['student'];
     if ($_POST['mark']) {
         $mark = $_POST['mark'];
     } else {
@@ -41,6 +41,6 @@ if (isset($_POST['coursework_id']) && isset($_POST['student_id'])
         foreach ($errors as $error) {
             echo '<p>' . $error . '</p>';
         }
-        echo "<p><a href='create_course.html'>Please try again</a></p>";
+        echo "<p><a href='create_submission_form.php'>Please try again</a></p>";
     }
 }

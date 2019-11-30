@@ -5,14 +5,15 @@ require_once '../header.html';
 $courses = getAllCourses();
 ?>
 
+<h2>Create a Course</h2>
 <form method="post" action="create_coursework.php">
     <input name="name" type="text" placeholder="Enter the course's name" required>
     <br>
-    <select name='course'>
-        <?php foreach ($courses as $course) {
-            echo "<option value='" . $course['course_id'] . "'>" . $course['name'] . "</option>";
-        }
-        ?>
+    <select name='course' required>
+    <?php foreach ($courses as $course) {
+        echo "<option value='" . $course['course_id'] . "'>" . $course['name'] . "</option>";
+    }
+    ?>
     </select>
     <br>
     <input name="deadline" type="date" placeholder="Deadline for this Coursework" required>

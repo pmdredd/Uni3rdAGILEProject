@@ -36,6 +36,6 @@ if (isset($_POST['name'])) {
         foreach ($errors as $error) {
             echo '<p>' . $error . '</p>';
         }
-        echo "<p><a href='create_coursework.html'>Please try again</a></p>";
+        echo "<p><a href='create_coursework_form.php'>Please try again</a></p>";
     }
 }
