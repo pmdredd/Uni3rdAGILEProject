@@ -1,8 +1,10 @@
 <?php
 if (php_sapi_name() == "cli") {
     require_once getcwd().'../database/dbconnection.php';
+    require_once getcwd().'../grades/grade_functions.php';
 } else {
     require_once $_SERVER['DOCUMENT_ROOT'].'/database/dbconnection.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/grades/grade_functions.php';
 }
 
 function getAllSubmissions() {
@@ -15,7 +17,7 @@ function getAllSubmissions() {
 }
 
 function createSubmission($coursework_id, $student_id, $mark = null, $hand_in_date, $second_submission) {
-    $grade = getAlphanumericGrade($mark, $second_submission);
+    $grade = calculateGrade($mark, $second_submission);
     $query = "INSERT INTO submissions (coursework_id, student_id, mark, hand_in_date, second_submission, grade)
               VALUES (?, ?, ?, ?, ?, ?)";
     DB::run($query, [$coursework_id, $student_id, $mark, $hand_in_date, $second_submission, $grade]);

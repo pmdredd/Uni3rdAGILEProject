@@ -6,7 +6,7 @@ require_once 'grades/grade_functions.php';
 /**
  * Class GradesTest
  */
-final class SubmissionsTest extends TestCase {
+final class GradesTest extends TestCase {
 
     /**
     * Test upper and lower mark bounds of each grade 
