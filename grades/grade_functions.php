@@ -6,5 +6,5 @@ if (php_sapi_name() == "cli") {
 }
 
 function calculateGrade() {
-    return false;
+    return true;
 }
