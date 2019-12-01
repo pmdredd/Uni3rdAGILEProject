@@ -5,7 +5,15 @@ if (php_sapi_name() == "cli") {
     require_once $_SERVER['DOCUMENT_ROOT'].'/database/dbconnection.php';
 }
 
-function calculateGrade($mark) {
+function calculateGrade($mark, $second_submission) {
+    if ($second_submission) {
+        return calculateGradeSecondSubmission($mark);
+    } else {
+        return calculateGradeFirstSubmission($mark);
+    }
+}
+
+function calculateGradeFirstSubmission($mark) {
     if ($mark >= 95 ) {
         return "A1";
     } elseif ($mark >= 89) {
@@ -47,3 +55,9 @@ function calculateGrade($mark) {
     }
     return false;
 }
+
+function calculateGradeSecondSubmission() {
+    return true;
+}
+
+echo calculateGrade(100,false);
