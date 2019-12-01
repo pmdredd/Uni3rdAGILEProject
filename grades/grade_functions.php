@@ -5,6 +5,10 @@ if (php_sapi_name() == "cli") {
     require_once $_SERVER['DOCUMENT_ROOT'].'/database/dbconnection.php';
 }
 
-function calculateGrade() {
-    return true;
+function calculateGrade($mark) {
+    if ($mark >= 95 ) {
+        return "A1";
+    } else {
+        return false;
+    }
 }
