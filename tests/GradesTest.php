@@ -11,6 +11,8 @@ final class SubmissionsTest extends TestCase {
     public function testCalculateGrade() {
         $this->assertEquals('A1', calculateGrade(100));
         $this->assertEquals('A1', calculateGrade(95));
+        $this->assertEquals('A2', calculateGrade(94));
+        $this->assertEquals('A2', calculateGrade(89));
     }
 
 }

@@ -8,7 +8,8 @@ if (php_sapi_name() == "cli") {
 function calculateGrade($mark) {
     if ($mark >= 95 ) {
         return "A1";
-    } else {
-        return false;
+    } elseif ($mark >= 89) {
+        return "A2";
     }
+    return false;
 }
