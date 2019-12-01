@@ -56,8 +56,19 @@ function calculateGradeFirstSubmission($mark) {
     return false;
 }
 
-function calculateGradeSecondSubmission() {
-    return true;
+function calculateGradeSecondSubmission($mark) {
+    if ($mark >= 40) {
+        return "D3";
+    } elseif ($mark >= 37) {
+        return "MF1";
+    } elseif($mark >= 34) {
+        return "MF2";
+    } elseif ($mark >= 30) {
+        return "MF3";
+    } elseif ($mark >= 20) {
+        return "CF"; 
+    } elseif ($mark >= 0) {
+        return "BF";
+    }
+    return false;
 }
-
-echo calculateGrade(100,false);

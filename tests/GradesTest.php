@@ -56,10 +56,25 @@ final class SubmissionsTest extends TestCase {
         $this->assertEquals('CF', calculateGrade(20, false));
         $this->assertEquals('BF', calculateGrade(19, false));
         $this->assertEquals('BF', calculateGrade(0, false));
+    
+        $this->assertFalse(calculateGrade(-1, false));
     }
 
     public function testCalculateGradeSecondSubmission() {
-        $this->assertTrue(calculateGradeSecondSubmission());
+        $this->assertEquals('D3', calculateGrade(100, true));
+        $this->assertEquals('D3', calculateGrade(40, true));
+
+        $this->assertEquals('MF1', calculateGrade(39, true));
+        $this->assertEquals('MF1', calculateGrade(37, true));
+        $this->assertEquals('MF2', calculateGrade(36, true));
+        $this->assertEquals('MF2', calculateGrade(34, true));
+        $this->assertEquals('MF3', calculateGrade(33, true));
+        $this->assertEquals('MF3', calculateGrade(30, true));
+
+        $this->assertEquals('CF', calculateGrade(29, true));
+        $this->assertEquals('CF', calculateGrade(20, true));
+        $this->assertEquals('BF', calculateGrade(19, true));
+        $this->assertEquals('BF', calculateGrade(0, true));
     }
 
 }
