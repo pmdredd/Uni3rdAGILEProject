@@ -9,7 +9,8 @@ require_once 'grades/grade_functions.php';
 final class SubmissionsTest extends TestCase {
 
     public function testCalculateGrade() {
-        $this->assertTrue(calculateGrade());
+        $this->assertEquals('A1', calculateGrade(100));
+        $this->assertEquals('A1', calculateGrade(95));
     }
 
 }
