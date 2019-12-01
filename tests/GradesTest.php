@@ -13,6 +13,10 @@ final class SubmissionsTest extends TestCase {
     * e.g. A2 can only be returned if mark is between 94 and 89
     */
     public function testCalculateGradeFirstSubmission() {
+        // out of bounds should return false
+        $this->assertFalse(calculateGrade(101, false));
+        $this->assertFalse(calculateGrade(-1, false));
+
         $this->assertEquals('A1', calculateGrade(100, false));
         $this->assertEquals('A1', calculateGrade(95, false));
         $this->assertEquals('A2', calculateGrade(94, false));
@@ -55,12 +59,14 @@ final class SubmissionsTest extends TestCase {
         $this->assertEquals('CF', calculateGrade(29, false));
         $this->assertEquals('CF', calculateGrade(20, false));
         $this->assertEquals('BF', calculateGrade(19, false));
-        $this->assertEquals('BF', calculateGrade(0, false));
-    
-        $this->assertFalse(calculateGrade(-1, false));
+        $this->assertEquals('BF', calculateGrade(0, false));    
     }
 
     public function testCalculateGradeSecondSubmission() {
+        // out of bounds should return false
+        $this->assertFalse(calculateGrade(101, true));
+        $this->assertFalse(calculateGrade(-1, false));
+
         $this->assertEquals('D3', calculateGrade(100, true));
         $this->assertEquals('D3', calculateGrade(40, true));
 
@@ -75,6 +81,7 @@ final class SubmissionsTest extends TestCase {
         $this->assertEquals('CF', calculateGrade(20, true));
         $this->assertEquals('BF', calculateGrade(19, true));
         $this->assertEquals('BF', calculateGrade(0, true));
+
     }
 
 }
