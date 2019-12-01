@@ -14,7 +14,9 @@ function calculateGrade($mark, $second_submission) {
 }
 
 function calculateGradeFirstSubmission($mark) {
-    if ($mark >= 95 ) {
+    if ($mark > 100) {
+        return false;
+    } elseif ($mark >= 95 ) {
         return "A1";
     } elseif ($mark >= 89) {
         return "A2";
@@ -52,12 +54,15 @@ function calculateGradeFirstSubmission($mark) {
         return "CF";
     } elseif ($mark >= 0) {
         return "BF";
+    } else {
+        return false;
     }
-    return false;
 }
 
 function calculateGradeSecondSubmission($mark) {
-    if ($mark >= 40) {
+    if ($mark > 100) {
+        return false;
+    } elseif ($mark >= 40) {
         return "D3";
     } elseif ($mark >= 37) {
         return "MF1";
