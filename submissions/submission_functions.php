@@ -41,58 +41,58 @@ function getAlphanumericGrade($mark, $second_submission) {
         if ($mark >= 40) {
             return "D3";
         } elseif ($mark >= 37) {
-            return "MF1";
+            return 5;
         } elseif($mark >= 34) {
-            return "MF2";
+            return 4;
         } elseif ($mark >= 30) {
-            return "MF3";
+            return 3;
         } elseif ($mark >= 20) {
-            return "CF"; 
+            return 2; 
         } elseif ($mark >= 0) {
-            return "BF";
+            return 1;
         } else {
             //so we can check if this has failed e.g. if the $mark is below 0 for some reason
             return false; 
         }
     } else {
         if($mark >= 95)  {
-            return "A1";
+            return 19;
         } elseif ($mark >= 89) {
-            return "A2";
+            return 18;
         } elseif ($mark >= 83) {
-            return "A3";
+            return 17;
         } elseif ($mark >= 76) {
-            return "A4";
+            return 16;
         } elseif ($mark >= 70) {
-            return "A5";
+            return 15;
         } elseif ($mark >= 67) {
-            return "B1";
+            return 14;
         } elseif ($mark >= 64) {
-            return "B2";
+            return 13;
         } elseif ($mark >= 60) {
-            return "B3";
+            return 12;
         } elseif ($mark >= 57) {
-            return "C1";
+            return 11;
         } elseif ($mark >= 54) {
-            return "C2";
+            return 10;
         } elseif ($mark >= 50) {
-            return "C3";
+            return 9;
         } elseif ($mark >= 47) {
-            return "D1";
+            return 8;
         } elseif ($mark >= 44) {
-            return "D2";
+            return 7;
         } elseif ($mark >= 40) {
-            return "D3";
+            return 6;
         } elseif ($mark >= 37) {
-            return "MF1";
+            return 5;
         } elseif ($mark >= 34) {
-            return "MF2";
+            return 4;
         } elseif ($mark >= 30) {
-            return "MF3";
+            return 3;
         } elseif ($mark >= 20) {
-            return "CF";
+            return 2;
         } elseif ($mark >= 0) {
-            return "BF";
+            return 1;
         } else {
         //so we can check if this has failed e.g. if the $mark is below 0 for some reason
             return false; 

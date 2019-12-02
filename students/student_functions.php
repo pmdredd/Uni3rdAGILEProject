@@ -38,3 +38,13 @@ function getAverageMark($student_id) {
     $avg_mark = DB::run($query, [$student_id])->fetchColumn();
     return $avg_mark;
 }
+
+function getStudentGradeCalculation ($Student_id)
+    //To get marks and weight from a stendts submission
+    $query= "SELECT AVG(mark) FROM submissions WHERE student_id=?"
+    return $WeightedGrade
+}
+
+function getStudentGrade ($WeightedGrade){
+    //Fetches value from getStudentGradeCalculation then displays value
+}
