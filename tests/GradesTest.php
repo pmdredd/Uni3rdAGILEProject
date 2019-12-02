@@ -84,24 +84,44 @@ final class GradesTest extends TestCase {
 
     }
 
-    public function testGradeMapping() {
-        $this->assertSame(17, getGradeMapping("A1"));
-        $this->assertSame(16, getGradeMapping("A2"));
-        $this->assertSame(15, getGradeMapping("A3"));
-        $this->assertSame(14, getGradeMapping("A4"));
-        $this->assertSame(13, getGradeMapping("A5"));
-        $this->assertSame(12, getGradeMapping("B1"));
-        $this->assertSame(11, getGradeMapping("B2"));
-        $this->assertSame(10, getGradeMapping("B3"));
-        $this->assertSame(9, getGradeMapping("C1"));
-        $this->assertSame(8, getGradeMapping("C2"));
-        $this->assertSame(7, getGradeMapping("C3"));
-        $this->assertSame(6, getGradeMapping("D1"));
-        $this->assertSame(5, getGradeMapping("D2"));
-        $this->assertSame(4, getGradeMapping("D3"));
-        $this->assertSame(3, getGradeMapping("MF"));
-        $this->assertSame(2, getGradeMapping("CF"));
-        $this->assertSame(1, getGradeMapping("BF"));
+    public function testGetGradeIdByGrade() {
+        $this->assertEquals(17, getGradeIdByGrade("A1"));
+        $this->assertEquals(16, getGradeIdByGrade("A2"));
+        $this->assertEquals(15, getGradeIdByGrade("A3"));
+        $this->assertEquals(14, getGradeIdByGrade("A4"));
+        $this->assertEquals(13, getGradeIdByGrade("A5"));
+        $this->assertEquals(12, getGradeIdByGrade("B1"));
+        $this->assertEquals(11, getGradeIdByGrade("B2"));
+        $this->assertEquals(10, getGradeIdByGrade("B3"));
+        $this->assertEquals(9, getGradeIdByGrade("C1"));
+        $this->assertEquals(8, getGradeIdByGrade("C2"));
+        $this->assertEquals(7, getGradeIdByGrade("C3"));
+        $this->assertEquals(6, getGradeIdByGrade("D1"));
+        $this->assertEquals(5, getGradeIdByGrade("D2"));
+        $this->assertEquals(4, getGradeIdByGrade("D3"));
+        $this->assertEquals(3, getGradeIdByGrade("MF"));
+        $this->assertEquals(2, getGradeIdByGrade("CF"));
+        $this->assertEquals(1, getGradeIdByGrade("BF"));
+    }
+
+    public function testGetGradeByGradeId() {
+        $this->assertEquals("A1", getGradeByGradeId(17));
+        $this->assertEquals("A2", getGradeByGradeId(16));
+        $this->assertEquals("A3", getGradeByGradeId(15));
+        $this->assertEquals("A4", getGradeByGradeId(14));
+        $this->assertEquals("A5", getGradeByGradeId(13));
+        $this->assertEquals("B1", getGradeByGradeId(12));
+        $this->assertEquals("B2", getGradeByGradeId(11));
+        $this->assertEquals("B3", getGradeByGradeId(10));
+        $this->assertEquals("C1", getGradeByGradeId(9));
+        $this->assertEquals("C2", getGradeByGradeId(8));
+        $this->assertEquals("C3", getGradeByGradeId(7));
+        $this->assertEquals("D1", getGradeByGradeId(6));
+        $this->assertEquals("D2", getGradeByGradeId(5));
+        $this->assertEquals("D3", getGradeByGradeId(4));
+        $this->assertEquals("MF", getGradeByGradeId(3));
+        $this->assertEquals("CF", getGradeByGradeId(2));
+        $this->assertEquals("BF", getGradeByGradeId(1));
     }
 
 }

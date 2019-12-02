@@ -18,10 +18,10 @@ function getAllSubmissions() {
 
 function createSubmission($coursework_id, $student_id, $mark, $hand_in_date, $second_submission) {
     $gradeValue = calculateGrade($mark, $second_submission);
-    $gradeKey = getGradeMapping($gradeValue);
+    $gradeId = getGradeIdByGrade($gradeValue);
     $query = "INSERT INTO submissions (coursework_id, student_id, mark, hand_in_date, second_submission, grade_id)
               VALUES (?, ?, ?, ?, ?, ?)";
-    DB::run($query, [$coursework_id, $student_id, $mark, $hand_in_date, $second_submission, $gradeKey]);
+    DB::run($query, [$coursework_id, $student_id, $mark, $hand_in_date, $second_submission, $gradeId]);
 }
 
 function getSubmissionById($submission_id) {

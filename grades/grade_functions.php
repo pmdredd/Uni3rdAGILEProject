@@ -6,21 +6,14 @@ if (php_sapi_name() == "cli") {
 }
 
 
-function getGradeMapping($grade) {
-    /* This associative array (aka HashMap or Dictionary) maps all possible Grade values to their respective Primary Key in the Grades table.
-     * The Grade keys are descending with the Grade values to make the logic around Late Penalties easier to understand e.g.
-     * Submission with Grade A5 is late by 3 days, and we 'drop down' the Grade each day the Submission is late, so
-     * we can decrement the Grade's PK by 3 to find the Grade after the late penalty of 3 days is applied.
-     *
-     * IMPORTANT: If the Grades table schema or records change for any reason, this mapping will need to be updated to reflect the change.
-    */
-    $gradeMap = array("A1" => 17, "A2" => 16, "A3" => 15, "A4" => 14, "A5" => 13,
-        "B1" => 12, "B2" => 11, "B3" => 10,
-        "C1" => 9, "C2" => 8, "C3" => 7,
-        "D1" => 6, "D2" => 5, "D3" => 4,
-        "MF" => 3, "CF" => 2, "BF" => 1);
+function getGradeIdByGrade($grade) {
+    $grade_id = DB::run("SELECT grade_id FROM grades WHERE grade LIKE ?", [$grade])->fetchColumn();
+    return $grade_id;
+}
 
-    return $gradeMap[$grade];
+function getGradeByGradeId($grade_id) {
+    $grade = DB::run("SELECT grade FROM grades WHERE grade_id = ?", [$grade_id])->fetchColumn();
+    return $grade;
 }
 
 function calculateGrade($mark, $second_submission) {
