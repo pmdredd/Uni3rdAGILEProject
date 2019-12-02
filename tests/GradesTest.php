@@ -9,7 +9,7 @@ require_once 'grades/grade_functions.php';
 final class GradesTest extends TestCase {
 
     /**
-    * Test upper and lower mark bounds of each grade 
+    * Test upper and lower mark bounds of each grade for first Submissions
     * e.g. A2 can only be returned if mark is between 94 and 89
     */
     public function testCalculateGradeFirstSubmission() {
@@ -62,6 +62,10 @@ final class GradesTest extends TestCase {
         $this->assertEquals('BF', calculateGrade(0, false));    
     }
 
+    /**
+     * Test upper and lower mark bounds of each grade for second Submissions
+     * e.g. A2 can only be returned if mark is between 94 and 89
+     */
     public function testCalculateGradeSecondSubmission() {
         // out of bounds should return false
         $this->assertFalse(calculateGrade(101, true));
@@ -84,6 +88,9 @@ final class GradesTest extends TestCase {
 
     }
 
+    /**
+     * Test that the function returns the correct Grade Primary Key in the db for each Grade value
+     */
     public function testGetGradeIdByGrade() {
         $this->assertEquals(17, getGradeIdByGrade("A1"));
         $this->assertEquals(16, getGradeIdByGrade("A2"));
@@ -104,6 +111,9 @@ final class GradesTest extends TestCase {
         $this->assertEquals(1, getGradeIdByGrade("BF"));
     }
 
+    /**
+     * Test that the function returns the correct Grade value for each Grade Primary Key in the db
+     */
     public function testGetGradeByGradeId() {
         $this->assertEquals("A1", getGradeByGradeId(17));
         $this->assertEquals("A2", getGradeByGradeId(16));
