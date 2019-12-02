@@ -40,11 +40,15 @@ function getAverageMark($student_id) {
 }
 
 function getStudentGradeCalculation ($Student_id)
-    //To get marks and weight from a stendts submission
-    $query= "SELECT AVG(mark) FROM submissions WHERE student_id=?"
-    return $WeightedGrade
+    //To get marks and weight from a stundts submission
+    $query= "SELECT mark FROM submissions WHERE student_id=?"
+    return $Grade
+    $query= "Select coursework_id FROM submissions WHERE student_id=?"
+    return $Weight
 }
 
-function getStudentGrade ($WeightedGrade){
+function getStudentGrade ($Grade,$Weight){
     //Fetches value from getStudentGradeCalculation then displays value
+    $WeightedGrade = $Grade*$Weight;
+    //Call Getalpahnumericgrade function
 }
