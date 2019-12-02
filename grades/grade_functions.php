@@ -6,12 +6,12 @@ if (php_sapi_name() == "cli") {
 }
 
 
-function getGradeIdByGrade($grade) {
+function getGradeId($grade) {
     $grade_id = DB::run("SELECT grade_id FROM grades WHERE grade LIKE ?", [$grade])->fetchColumn();
     return $grade_id;
 }
 
-function getGradeByGradeId($grade_id) {
+function getGrade($grade_id) {
     $grade = DB::run("SELECT grade FROM grades WHERE grade_id = ?", [$grade_id])->fetchColumn();
     return $grade;
 }

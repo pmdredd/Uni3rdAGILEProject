@@ -18,7 +18,7 @@ function getAllSubmissions() {
 
 function createSubmission($coursework_id, $student_id, $mark, $hand_in_date, $second_submission) {
     $gradeValue = calculateGrade($mark, $second_submission);
-    $gradeId = getGradeIdByGrade($gradeValue);
+    $gradeId = getGradeId($gradeValue);
     $query = "INSERT INTO submissions (coursework_id, student_id, mark, hand_in_date, second_submission, grade_id)
               VALUES (?, ?, ?, ?, ?, ?)";
     DB::run($query, [$coursework_id, $student_id, $mark, $hand_in_date, $second_submission, $gradeId]);
