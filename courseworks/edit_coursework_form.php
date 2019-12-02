@@ -3,7 +3,6 @@ require_once 'coursework_functions.php';
 require_once '../header.html';
 
 $coursework = getCourseworkById($_GET['id']);
-
 ?>
 
 <form method="post" action="edit_coursework.php">

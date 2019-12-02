@@ -6,7 +6,6 @@ $student = getStudentById($_GET['id']);
 
 ?>
 
-
 <h2>Edit Student</h2>
 
 <form method="post" action="edit_student.php">
