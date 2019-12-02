@@ -84,4 +84,24 @@ final class GradesTest extends TestCase {
 
     }
 
+    public function testGradeMapping() {
+        $this->assertSame(17, getGradeMapping("A1"));
+        $this->assertSame(16, getGradeMapping("A2"));
+        $this->assertSame(15, getGradeMapping("A3"));
+        $this->assertSame(14, getGradeMapping("A4"));
+        $this->assertSame(13, getGradeMapping("A5"));
+        $this->assertSame(12, getGradeMapping("B1"));
+        $this->assertSame(11, getGradeMapping("B2"));
+        $this->assertSame(10, getGradeMapping("B3"));
+        $this->assertSame(9, getGradeMapping("C1"));
+        $this->assertSame(8, getGradeMapping("C2"));
+        $this->assertSame(7, getGradeMapping("C3"));
+        $this->assertSame(6, getGradeMapping("D1"));
+        $this->assertSame(5, getGradeMapping("D2"));
+        $this->assertSame(4, getGradeMapping("D3"));
+        $this->assertSame(3, getGradeMapping("MF"));
+        $this->assertSame(2, getGradeMapping("CF"));
+        $this->assertSame(1, getGradeMapping("BF"));
+    }
+
 }
