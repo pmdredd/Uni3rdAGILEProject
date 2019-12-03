@@ -21,6 +21,10 @@ function getCourseById($course_id) {
     return $course;
 }
 
+function editCourse() {
+    return false;
+}
+
 function deleteCourseById($course_id) {
     $query = "DELETE FROM courses WHERE course_id=?";
     $course = DB::run($query, [$course_id]);

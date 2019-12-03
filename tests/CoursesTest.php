@@ -49,6 +49,10 @@ final class CoursesTest extends TestCase {
         $this->assertSame($test_course_id, $course['course_id']);
     }
 
+    public function testEditCourse() {
+        $this->assertTrue(editCourse());
+    }
+
     /**
      * Get the test course record from the db, ensure that the record exists,
      * then run the deleteCourseById() method and assert that the record has been deleted
