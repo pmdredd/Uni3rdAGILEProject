@@ -21,8 +21,8 @@ function getCourseById($course_id) {
     return $course;
 }
 
-function editCourse() {
-    return true;
+function editCourse($course_id, $name) {
+    DB::run("UPDATE courses SET name = ? WHERE course_id = ?", [$name, $course_id]);
 }
 
 function deleteCourseById($course_id) {
