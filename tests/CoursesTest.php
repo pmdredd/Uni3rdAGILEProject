@@ -50,7 +50,12 @@ final class CoursesTest extends TestCase {
     }
 
     public function testEditCourse() {
-        $this->assertTrue(editCourse());
+        $test_course = DB::run("SELECT * FROM courses WHERE name LIKE 'test course'")->fetch(PDO::FETCH_ASSOC);
+        $test_course_id = $test_course['course_id'];
+        $this->assertEquals("test course", $test_course['name']);
+        editCourse($test_course_id, "edited course");
+        $test_course = DB::run("SELECT * FROM courses WHERE course_id = ?", [$test_course_id])->fetch(PDO::FETCH_ASSOC);
+        $this->assertEquals("edited course", $test_course['name']);
     }
 
     /**
