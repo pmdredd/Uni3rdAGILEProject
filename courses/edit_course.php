@@ -15,8 +15,8 @@ if (isset($_POST['name']) && isset($_POST['course_id'])) {
     if (empty($course_id)) {
         array_push($errors, "Course id is required");
     }
-    if (count($errors) == 0) {        
-        DB::run("UPDATE courses SET name = ? WHERE course_id = ?", [$name, $course_id]);
+    if (count($errors) == 0) {
+        editCourse($course_id, $name);
         header('location: course_details.php?id=' . $course_id);
     } else {
         foreach ($errors as $error) {

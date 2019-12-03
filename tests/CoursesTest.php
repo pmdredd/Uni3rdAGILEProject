@@ -49,6 +49,10 @@ final class CoursesTest extends TestCase {
         $this->assertSame($test_course_id, $course['course_id']);
     }
 
+    /**
+     * Get the test course from the db, make sure the name is 'test course', use editCourse() to
+     * change the course's name, and assert that the same record has the changed name
+     */
     public function testEditCourse() {
         $test_course = DB::run("SELECT * FROM courses WHERE name LIKE 'test course'")->fetch(PDO::FETCH_ASSOC);
         $test_course_id = $test_course['course_id'];
