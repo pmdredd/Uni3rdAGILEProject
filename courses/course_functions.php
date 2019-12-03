@@ -22,7 +22,7 @@ function getCourseById($course_id) {
 }
 
 function editCourse() {
-    return false;
+    return true;
 }
 
 function deleteCourseById($course_id) {
