@@ -24,7 +24,7 @@ function createSubmission($coursework_id, $student_id, $mark = null, $hand_in_da
 
 function getSubmissionById($submission_id) {
 
-    $query = "SELECT submission_id, mark, hand_in_date, grade, second_submission, name as student_name FROM submissions sub
+    $query = "SELECT submission_id, coursework_id, stu.student_id, mark, hand_in_date, grade, second_submission, stu.name as student_name FROM submissions sub
               JOIN students stu ON sub.student_id = stu.student_id
               WHERE submission_id = ?";
     $submission = DB::run($query, [$submission_id])->fetch(PDO::FETCH_ASSOC);
