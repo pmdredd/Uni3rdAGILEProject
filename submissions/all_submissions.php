@@ -15,7 +15,7 @@ if (isset($_SESSION['success'])) {
 $submissions = getAllSubmissions();
 
 echo '<h1>Submissions</h1>';
-echo "<a href='create_submission.html'>Create Submission</a>\n";
+echo "<a href='create_submission_form.php'>Create Submission</a>\n";
 echo '<br>';
 echo '<br>';
 if ($submissions) {

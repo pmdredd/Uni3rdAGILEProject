@@ -15,7 +15,7 @@ if (isset($_SESSION['success'])) {
 $students = getAllStudents();
 
 echo '<h1>Students</h1>';
-echo "<a href='register_student.html'>Register Student</a>\n";
+echo "<a href='register_student_form.php'>Register Student</a>\n";
 echo '<br>';
 echo '<br>';
 if ($students) {

@@ -18,7 +18,8 @@ if ($coursework) {
     echo '<form action="" method="post">
             <input type="hidden" name="delete" value="' . $coursework_id . '"/>
             <input type="submit" value="Delete Coursework">
-        </form>'; 
+        </form>';
+    echo '<a href=edit_coursework_form.php?id=' . $coursework_id . '><button>Edit Coursework</button></a>';  
     echo '<button type="button" onclick="javascript:history.back()">Back</button>';
     echo '<br>';
     echo '<hr>';

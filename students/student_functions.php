@@ -28,7 +28,9 @@ function deleteStudentById($student_id) {
 }
 
 function getSubmissionsByStudentId($student_id) {
-    $query = "SELECT * FROM submissions WHERE student_id=?";
+    $query = "SELECT * FROM submissions
+              JOIN grades ON submissions.grade_id = grades.grade_id 
+              WHERE student_id=?";
     $submissions = DB::run($query, [$student_id])->fetchAll(PDO::FETCH_ASSOC);
     return $submissions;
 }

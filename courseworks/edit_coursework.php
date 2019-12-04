@@ -5,15 +5,18 @@ require_once '../header.html';
 session_start();
 $errors = array();
 
-if (isset($_POST['name'])) {
-
+if (isset($_POST['name']) && isset($_POST['coursework_id'])) {
     $name = $_POST['name'];
     if (empty($name)) {
         array_push($errors, "Coursework name is required");
     }
-    $course_id = $_POST['course'];
+    $coursework_id = $_POST['coursework_id'];
+    if (empty($coursework_id)) {
+        array_push($errors, "Coursework is required");
+    }
+    $course_id = $_POST['course_id'];
     if (empty($course_id)) {
-        array_push($errors, "A related Course is required");
+        array_push($errors, "A related Course ID is required");
     }
     $deadline = $_POST['deadline'];
     if (empty($deadline)) {
@@ -29,13 +32,13 @@ if (isset($_POST['name'])) {
     }
 
     if (count($errors) == 0) {
-        createCoursework($name, $course_id, $deadline, $credit_weight, $feedback_due_date);
-        $_SESSION['success'] = true;
-        header('location: all_courseworks.php');
+        DB::run("UPDATE courseworks SET name = ?, course_id = ?, deadline = ?, credit_weight = ?, feedback_due_date = ? 
+                 WHERE coursework_id = ?", [$name, $course_id, $deadline, $credit_weight, $feedback_due_date, $coursework_id]);
+        header('location: coursework_details.php?id=' . $coursework_id);
     } else {
         foreach ($errors as $error) {
             echo '<p>' . $error . '</p>';
         }
-        echo "<p><a href='create_coursework_form.php'>Please try again</a></p>";
+        echo "<p><a href='edit_coursework_form.php?id=" . $coursework_id . "'>Please try again</a></p>";
     }
 }
