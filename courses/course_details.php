@@ -23,8 +23,15 @@ if ($course) {
     echo '<button type="button" onclick="javascript:history.back()">Back</button>';
     echo '<br>';
     echo '<hr>';
-    echo '<h1>Courseworks for this Course: </h1>';
-    if ($courseworks) {
+    echo '<h1>Courseworks for this Course: </h1>'; 
+	$course_avg_mark = DB::run("SELECT AVG(mark) FROM submissions sub
+			JOIN courseworks cworks ON cworks.coursework_id = sub.coursework_id
+			JOIN courses c on c.course_id = cworks.course_id
+			WHERE c.course_id = ?", [$course['course_id']])->fetchColumn();
+	echo '<p>Class Score Average: ' . $course_avg_mark . '</p>';	
+	
+	
+            if ($courseworks) {
         foreach ($courseworks as $coursework) {
             echo "<a href='/courseworks/coursework_details.php?id=" . $coursework['coursework_id'] . "'>" . $coursework['name'] . "</a>";
             echo "</br>";
