@@ -52,6 +52,19 @@ final class StudentsTest extends TestCase {
         $this->assertSame($test_student_id, $student['student_id']);
     }
 
+    public function testEditStudent() {
+        //get the record from db
+        $test_student = DB::run("SELECT * FROM students WHERE name LIKE 'test student'")->fetch(PDO::FETCH_ASSOC);
+        $test_student_id = $test_student['student_id'];
+        //check what the name currently is
+        $this->assertEquals("test student", $test_student['name']);
+        //run the edit function with a new name
+        editStudent($test_student_id, "edited student");
+        // check that the record has been updated
+        $test_student = DB::run("SELECT * FROM students WHERE student_id = ?", [$test_student_id])->fetch(PDO::FETCH_ASSOC);
+        $this->assertEquals("edited student", $test_student['name']);
+    }
+
     /**
      * Get the test student record from the db, ensure that the record exists,
      * then run the deleteStudentById() method and assert that the record has been deleted
