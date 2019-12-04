@@ -21,6 +21,11 @@ function getCourseworkById($coursework_id) {
     return $coursework;
 }
 
+function editCoursework($coursework_id, $name, $course_id, $deadline, $credit_weight, $feedback_due_date) {
+    DB::run("UPDATE courseworks SET name = ?, course_id = ?, deadline = ?, credit_weight = ?, feedback_due_date = ? 
+                 WHERE coursework_id = ?", [$name, $course_id, $deadline, $credit_weight, $feedback_due_date, $coursework_id]);
+}
+
 function deleteCourseworkById($coursework_id) {
     $query = "DELETE FROM courseworks WHERE coursework_id=?";
     $coursework = DB::run($query, [$coursework_id]);
