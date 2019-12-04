@@ -1,5 +1,6 @@
 <?php
 require_once 'submission_functions.php';
+require_once 'grades/grade_functions.php';
 require_once '../header.html';
 
 session_start();
@@ -37,9 +38,7 @@ if (isset($_POST['coursework_id']) && isset($_POST['student_id'])
     }
 
     if (count($errors) == 0) {
-        $grade = getAlphanumericGrade($mark, $second_submission);
-        DB::run("UPDATE submissions SET coursework_id = ?, student_id = ?, mark = ?, hand_in_date = ?, second_submission = ?, grade = ? 
-                 WHERE submission_id = ?", [$coursework_id, $student_id, $mark, $hand_in_date, $second_submission, $grade, $submission_id]);
+        editSubmission($submission_id, $coursework_id, $student_id, $mark, $hand_in_date, $second_submission);
         header('location: submission_details.php?id=' . $submission_id);
     } else {
         foreach ($errors as $error) {
