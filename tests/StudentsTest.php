@@ -14,10 +14,10 @@ final class StudentsTest extends TestCase {
      */
     protected function setUp(): void {
         DB::run("INSERT INTO students (student_id, name) VALUES (0, 'test student')");
-        DB::run("INSERT INTO submissions (coursework_id, student_id, mark, hand_in_date, second_submission, grade)
-                 VALUES (1, 0, 40, '2019-12-12', 0, 'D3')");
-        DB::run("INSERT INTO submissions (coursework_id, student_id, mark, hand_in_date, second_submission, grade)
-                 VALUES (1, 0, 80, '2019-12-12', 0, 'A4')");
+        DB::run("INSERT INTO submissions (coursework_id, student_id, mark, hand_in_date, second_submission, grade_id)
+                 VALUES (1, 0, 40, '2019-12-12', 0, 4)");
+        DB::run("INSERT INTO submissions (coursework_id, student_id, mark, hand_in_date, second_submission, grade_id)
+                 VALUES (1, 0, 80, '2019-12-12', 0, 14)");
     }
 
     /**

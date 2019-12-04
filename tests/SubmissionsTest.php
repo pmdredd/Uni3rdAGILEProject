@@ -16,8 +16,8 @@ final class SubmissionsTest extends TestCase {
         DB::run("INSERT INTO students (student_id, name) VALUES (0, 'test student')");
         DB::run("INSERT INTO courseworks (coursework_id, name, course_id, deadline, credit_weight, feedback_due_date) 
                  VALUES (0, 'test coursework', 2, '2019-12-12', 10, '2019-12-21')");
-        DB::run("INSERT INTO submissions (submission_id, coursework_id, student_id, mark, hand_in_date, second_submission, grade)
-                 VALUES (0, 2, 0, 80, '2019-12-12', 0, 'A1')");
+        DB::run("INSERT INTO submissions (submission_id, coursework_id, student_id, mark, hand_in_date, second_submission, grade_id)
+                 VALUES (0, 2, 0, 80, '2019-12-12', 0, '17')");
     }
 
     /**
@@ -72,8 +72,6 @@ final class SubmissionsTest extends TestCase {
         $recordExists = DB::run("SELECT COUNT(1) FROM submissions WHERE submission_id = ?", [$test_submission_id])->fetchColumn();
         $this->assertEquals(0, $recordExists);
     }
-
-    public function testGetAlphanumericGrade() {}
 
     /**
     * Remove the test submission, coursework and student from the db.
