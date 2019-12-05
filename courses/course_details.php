@@ -18,20 +18,15 @@ if ($course) {
     echo '<form action="" method="post">
             <input type="hidden" name="delete" value="' . $course_id . '"/>
             <input type="submit" value="Delete Course">
-        </form>';
+          </form>';
     echo '<a href=edit_course_form.php?id=' . $course_id . '><button>Edit Course</button></a>';  
     echo '<button type="button" onclick="javascript:history.back()">Back</button>';
     echo '<br>';
     echo '<hr>';
     echo '<h1>Courseworks for this Course: </h1>'; 
-	$course_avg_mark = DB::run("SELECT AVG(mark) FROM submissions sub
-			JOIN courseworks cworks ON cworks.coursework_id = sub.coursework_id
-			JOIN courses c on c.course_id = cworks.course_id
-			WHERE c.course_id = ?", [$course['course_id']])->fetchColumn();
-	echo '<p>Class Score Average: ' . $course_avg_mark . '</p>';	
-	
-	
-            if ($courseworks) {
+    $avg_mark = getCourseAverageMark($course_id);
+	echo '<p>Class Score Average: ' . $avg_mark . '</p>';
+    if ($courseworks) {
         foreach ($courseworks as $coursework) {
             echo "<a href='/courseworks/coursework_details.php?id=" . $coursework['coursework_id'] . "'>" . $coursework['name'] . "</a>";
             echo "</br>";
@@ -42,5 +37,3 @@ if ($course) {
 } else {
     echo 'There was a problem, please try again';
 }
-
-?>
