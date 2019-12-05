@@ -14,6 +14,8 @@ if(isset($_POST['delete'])){ //check if form was submitted
 
 if ($course) {
     echo '<h1>' . $course['name'] . '</h1>';
+    $avg_mark = getCourseAverageMark($course_id);
+    echo '<p>Class Score Average: ' . $avg_mark . '</p>';
     echo '<br>';
     echo '<form action="" method="post">
             <input type="hidden" name="delete" value="' . $course_id . '"/>
@@ -24,8 +26,7 @@ if ($course) {
     echo '<br>';
     echo '<hr>';
     echo '<h1>Courseworks for this Course: </h1>'; 
-    $avg_mark = getCourseAverageMark($course_id);
-	echo '<p>Class Score Average: ' . $avg_mark . '</p>';
+
     if ($courseworks) {
         foreach ($courseworks as $coursework) {
             echo "<a href='/courseworks/coursework_details.php?id=" . $coursework['coursework_id'] . "'>" . $coursework['name'] . "</a>";
