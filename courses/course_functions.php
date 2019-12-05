@@ -21,6 +21,14 @@ function getCourseById($course_id) {
     return $course;
 }
 
+function getCourseAverageMark($course_id) {
+    $avg_mark = DB::run("SELECT AVG(mark) FROM submissions sub
+                             JOIN courseworks cworks ON cworks.coursework_id = sub.coursework_id
+                             JOIN courses c on c.course_id = cworks.course_id
+                             WHERE c.course_id = ?", [$course_id])->fetchColumn();
+    return $avg_mark;
+}
+
 function deleteCourseById($course_id) {
     $query = "DELETE FROM courses WHERE course_id=?";
     $course = DB::run($query, [$course_id]);
