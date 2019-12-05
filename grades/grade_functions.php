@@ -87,3 +87,17 @@ function calculateGradeSecondSubmission($mark) {
     }
     return false;
 }
+
+function calculateLateness ($mark, $second_submission, $submissiondate, $duedate) {
+    $lateness = Select Cast ((JulianDay($submissiondate) - JulianDay($duedate)) As Integer);
+    if ($query < 0 ) {
+        //If Late return getGrade function then Get GradeID then +or- $lateness to GradeID = Grade with Latness factored in
+         $gradeValue = calculateGrade($mark, $second_submission);
+         $gradeId = getGradeId($gradeValue);
+         $gradeId = $gradeId + or - $lateness;
+         $query = "INSERT INTO submissions (coursework_id, student_id, mark, hand_in_date, second_submission, grade_id)
+              VALUES (?, ?, ?, ?, ?, ?)";
+         DB::run($query, [$coursework_id, $student_id, $mark, $hand_in_date, $second_submission, $gradeId]);
+    } else
+    return null; //Do nothing if not Late
+}
