@@ -21,6 +21,14 @@ function getCourseworkById($coursework_id) {
     return $coursework;
 }
 
+function getCourseworkCourseName($coursework_id) {
+    $query = "SELECT c.name FROM courseworks
+              JOIN courses c on courseworks.course_id = c.course_id
+              WHERE coursework_id = ?";
+    $coursework_course = DB::run($query, [$coursework_id]);
+    return $coursework_course;
+}
+
 function editCoursework($coursework_id, $name, $course_id, $deadline, $credit_weight, $feedback_due_date) {
     DB::run("UPDATE courseworks SET name = ?, course_id = ?, deadline = ?, credit_weight = ?, feedback_due_date = ? 
                  WHERE coursework_id = ?", [$name, $course_id, $deadline, $credit_weight, $feedback_due_date, $coursework_id]);

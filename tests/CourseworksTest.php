@@ -79,6 +79,15 @@ final class CourseworksTest extends TestCase {
         $this->assertSame('2020-01-01', $test_coursework['feedback_due_date']);
     }
 
+    public function testGetCourseworkCourseName() {
+        $test_coursework_course_name = DB::run("SELECT c.name FROM courseworks cworks
+                                                    JOIN courses c on cworks.course_id = c.course_id
+                                                    WHERE cworks.name LIKE 'test coursework'")->fetchColumn();
+        $this->assertSame($test_coursework_course_name, 'test coursework');
+        
+    }
+
+
     /**
      * Get the test coursework record from the db, ensure that the record exists,
      * then run the deleteCourseworkById() method and assert that the record has been deleted
