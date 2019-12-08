@@ -67,7 +67,7 @@ final class SubmissionsTest extends TestCase {
         $this->assertSame("2019-12-12", $test_submission["hand_in_date"]);
         $this->assertEquals(0, $test_submission["second_submission"]);
 
-        editSubmission(0, 3, 2, 63, '2019-11-12', 0, '11');
+        editSubmission(0, 3, 2, 63, '2019-11-12', 0);
 
         $test_submission = DB::run("SELECT * FROM submissions WHERE submission_id = 0")->fetch(PDO::FETCH_ASSOC);
         $this->assertEquals(3, $test_submission["coursework_id"]);
