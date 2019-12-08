@@ -8,11 +8,12 @@ if (php_sapi_name() == "cli") {
 }
 
 function getAllSubmissions() {
-    $query = "SELECT submission_id, hand_in_date, stu.name as student_name, cworks.name as coursework_name, c.name as course_name FROM submissions sub
-    JOIN students stu ON sub.student_id = stu.student_id
-    JOIN courseworks cworks ON sub.coursework_id = cworks.coursework_id
-	JOIN courses c ON cworks.course_id = c.course_id
-    order by c.course_id, cworks.coursework_id, hand_in_date";
+    $query = "SELECT submission_id, hand_in_date, stu.name as student_name, cworks.name as coursework_name, c.name as course_name
+              FROM submissions sub
+              JOIN students stu ON sub.student_id = stu.student_id
+              JOIN courseworks cworks ON sub.coursework_id = cworks.coursework_id
+	          JOIN courses c ON cworks.course_id = c.course_id
+              order by c.course_id, cworks.coursework_id, hand_in_date";
     $submissions = DB::run($query)->fetchAll(PDO::FETCH_ASSOC);
     return $submissions;
 }
