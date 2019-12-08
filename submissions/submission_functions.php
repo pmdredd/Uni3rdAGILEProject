@@ -1,8 +1,10 @@
 <?php
 if (php_sapi_name() == "cli") {
     require_once getcwd().'../database/dbconnection.php';
+    require_once getcwd().'../grades/grade_functions.php';
 } else {
     require_once $_SERVER['DOCUMENT_ROOT'].'/database/dbconnection.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/grades/grade_functions.php';
 }
 
 function getAllSubmissions() {
