@@ -5,7 +5,6 @@ if (php_sapi_name() == "cli") {
     require_once $_SERVER['DOCUMENT_ROOT'].'/database/dbconnection.php';
 }
 
-
 function getGradeId($grade) {
     $grade_id = DB::run("SELECT grade_id FROM grades WHERE grade LIKE ?", [$grade])->fetchColumn();
     return $grade_id;
