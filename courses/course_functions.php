@@ -22,10 +22,11 @@ function getCourseById($course_id) {
 }
 
 function getCourseAverageMark($course_id) {
-    $avg_mark = DB::run("SELECT AVG(mark) FROM submissions sub
-                             JOIN courseworks cworks ON cworks.coursework_id = sub.coursework_id
-                             JOIN courses c on c.course_id = cworks.course_id
-                             WHERE c.course_id = ?", [$course_id])->fetchColumn();
+    $query = "SELECT AVG(mark) FROM submissions sub
+              JOIN courseworks cworks ON cworks.coursework_id = sub.coursework_id
+              JOIN courses c on c.course_id = cworks.course_id
+              WHERE c.course_id = ?";
+    $avg_mark = DB::run($query, $course_id)->fetchColumn();
     return $avg_mark;
 }
 
