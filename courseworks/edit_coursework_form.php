@@ -11,7 +11,7 @@ $courses = getAllCourses();
     <input name="coursework_id" type="hidden" value="<?php echo $coursework['coursework_id'] ?>">
     <input name="name" type="text" value="<?php echo $coursework['coursework_name']?>" required>
     <br>
-    <select name='course_id' required>
+    <select name='course' required>
     <?php
     echo "<option selected value='" . $coursework['course_id'] . "'>" . $coursework['course_name'] . "</option>";
     echo "<br>";

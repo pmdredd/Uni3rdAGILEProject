@@ -14,7 +14,7 @@ if (isset($_POST['name']) && isset($_POST['coursework_id'])) {
     if (empty($coursework_id)) {
         array_push($errors, "Coursework is required");
     }
-    $course_id = $_POST['course_id'];
+    $course_id = $_POST['course'];
     if (empty($course_id)) {
         array_push($errors, "A related Course ID is required");
     }
