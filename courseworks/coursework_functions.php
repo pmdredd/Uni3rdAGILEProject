@@ -15,18 +15,16 @@ function createCoursework($name, $course_id, $deadline, $credit_weight, $feedbac
     DB::run($query, [$name, $course_id, $deadline, $credit_weight, $feedback_due_date]);
 }
 
+/**
+ * the 'api' for getting a coursework's name is different because we are also joining the courses table that has its own
+ * name field. This is quick and dirty solution to meet the deadline. Ideally we alter the schema to make each 'name' col unique
+ */
 function getCourseworkById($coursework_id) {
-    $query = "SELECT * FROM courseworks WHERE coursework_id=?";
+    $query = "SELECT *, c.name as course_name, cworks.name as coursework_name FROM courseworks cworks 
+              JOIN courses c on cworks.course_id = c.course_id
+              WHERE coursework_id=?";
     $coursework = DB::run($query, [$coursework_id])->fetch(PDO::FETCH_ASSOC);
     return $coursework;
-}
-
-function getCourseworkCourseName($coursework_id) {
-    $query = "SELECT c.name FROM courseworks
-              JOIN courses c on courseworks.course_id = c.course_id
-              WHERE coursework_id = ?";
-    $coursework_course = DB::run($query, [$coursework_id]);
-    return $coursework_course;
 }
 
 function editCoursework($coursework_id, $name, $course_id, $deadline, $credit_weight, $feedback_due_date) {
