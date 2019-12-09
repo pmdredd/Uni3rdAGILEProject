@@ -97,7 +97,7 @@ function calculateLateness ($mark, $second_submission, $submissiondate, $duedate
         //If Late return getGrade function then Get GradeID then +or- $lateness to GradeID = Grade with Latness factored in
          $gradeValue = calculateGrade($mark, $second_submission);
          $gradeId = getGradeId($gradeValue);
-         $gradeId = $gradeId + or - $lateness;
+         $gradeId = $gradeId + $lateness; //Possibly Subtraction instead of Addition
          return $gradeId} else
     return null; //Do nothing if not Late
 }
