@@ -92,7 +92,7 @@ function calculateLateness ($mark, $second_submission, $submissiondate, $duedate
     $lateness = Select Cast ((JulianDay($submissiondate) - JulianDay($duedate)) As Integer);
     if ($lateness < 0 ) {
         if ($latness <-5){
-            $gradeID = getGradeID("D3");
+            $gradeID = getGradeID("BF");
             return $gradeID; } else
         //If Late return getGrade function then Get GradeID then +or- $lateness to GradeID = Grade with Latness factored in
          $gradeValue = calculateGrade($mark, $second_submission);
