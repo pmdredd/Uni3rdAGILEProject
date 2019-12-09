@@ -14,16 +14,19 @@ if(isset($_POST['delete'])){ //check if form was submitted
 
 if ($course) {
     echo '<h1>' . $course['name'] . '</h1>';
+    $avg_mark = getCourseAverageMark($course_id);
+    echo '<p>Class Score Average: ' . $avg_mark . '</p>';
     echo '<br>';
     echo '<form action="" method="post">
             <input type="hidden" name="delete" value="' . $course_id . '"/>
             <input type="submit" value="Delete Course">
-        </form>';
+          </form>';
     echo '<a href=edit_course_form.php?id=' . $course_id . '><button>Edit Course</button></a>';  
     echo '<button type="button" onclick="javascript:history.back()">Back</button>';
     echo '<br>';
     echo '<hr>';
-    echo '<h1>Courseworks for this Course: </h1>';
+    echo '<h1>Courseworks for this Course: </h1>'; 
+
     if ($courseworks) {
         foreach ($courseworks as $coursework) {
             echo "<a href='/courseworks/coursework_details.php?id=" . $coursework['coursework_id'] . "'>" . $coursework['name'] . "</a>";
@@ -35,5 +38,3 @@ if ($course) {
 } else {
     echo 'There was a problem, please try again';
 }
-
-?>

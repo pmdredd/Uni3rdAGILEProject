@@ -13,7 +13,7 @@ if(isset($_POST['delete'])){ //check if form was submitted
 }    
 
 if ($coursework) {
-    echo '<h1>' . $coursework['name'] . '</h1>';
+    echo '<h1>' . $coursework['coursework_name'] . '</h1>';
     echo '<br>';
     echo '<form action="" method="post">
             <input type="hidden" name="delete" value="' . $coursework_id . '"/>

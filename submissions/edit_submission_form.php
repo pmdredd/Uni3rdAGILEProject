@@ -1,19 +1,41 @@
 <?php
 require_once 'submission_functions.php';
+require_once '../courseworks/coursework_functions.php';
+require_once '../students/student_functions.php';
 require_once '../header.html';
 
 $submission = getSubmissionById($_GET['id']);
+$courseworks = getAllCourseworks();
+$students = getAllStudents();
 ?>
 
 <h2>Edit Submission</h2>
 
 <form method="post" action="edit_submission.php">
     <input name="submission_id" type="hidden" value="<?php echo $submission['submission_id'] ?>">
-    Coursework Id for this Submission
-    <input name="coursework_id" type="number" value="<?php echo $submission['coursework_id'] ?>" required>
+    Coursework for this Submission
+    <select name='coursework' required>
+    <?php
+    echo "<option selected value='" . $submission['coursework_id'] . "'>" . $submission['name'] . "</option>";
+    foreach ($courseworks as $coursework) {
+        if ($coursework['name'] != $submission['name']) {
+            echo "<option value='" . $coursework['coursework_id'] . "'>" . $coursework['name'] . "</option>";
+        }
+    }
+    ?>
+    </select>
     <br>
-    Student Id for the Student that this Submission belongs to
-    <input name="student_id" type="number" value="<?php echo $submission['student_id'] ?>" required>
+    Student that this Submission belongs to
+    <select name='student' required>
+    <?php
+    echo "<option selected value='" . $submission['student_id'] . "'>" . $submission['student_name'] . "</option>";
+    foreach ($students as $student) {
+        if ($student['name'] != $submission['student_name']) {
+            echo "<option value='" . $student['student_id'] . "'>" . $student['name'] . "</option>";
+        }
+    }
+    ?>
+    </select>
     <br>
     The Student's mark for this submission (out of 100)
     <input name="mark" type="number" value="<?php echo $submission['mark'] ?>">
