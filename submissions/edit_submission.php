@@ -1,15 +1,16 @@
 <?php
 require_once 'submission_functions.php';
+require_once '../grades/grade_functions.php';
 require_once '../header.html';
 
 session_start();
 $errors = array();
 
-if (isset($_POST['coursework_id']) && isset($_POST['student_id'])
+if (isset($_POST['coursework']) && isset($_POST['student'])
     && isset($_POST['mark']) && isset($_POST['hand_in_date']) && isset($_POST['submission_id'])) {
 
-    $coursework_id = $_POST['coursework_id'];
-    $student_id = $_POST['student_id'];
+    $coursework_id = $_POST['coursework'];
+    $student_id = $_POST['student'];
     if ($_POST['mark']) {
         $mark = $_POST['mark'];
     } else {
@@ -33,13 +34,11 @@ if (isset($_POST['coursework_id']) && isset($_POST['student_id'])
         array_push($errors, "Hand in date is required");
     }
     if (empty($submission_id)) {
-        array_push($errors, "Submission id is required");
+        array_push($errors, "Submission ID is required");
     }
 
     if (count($errors) == 0) {
-        $grade = getAlphanumericGrade($mark, $second_submission);
-        DB::run("UPDATE submissions SET coursework_id = ?, student_id = ?, mark = ?, hand_in_date = ?, second_submission = ?, grade = ? 
-                 WHERE submission_id = ?", [$coursework_id, $student_id, $mark, $hand_in_date, $second_submission, $grade, $submission_id]);
+        editSubmission($submission_id, $coursework_id, $student_id, $mark, $hand_in_date, $second_submission);
         header('location: submission_details.php?id=' . $submission_id);
     } else {
         foreach ($errors as $error) {
