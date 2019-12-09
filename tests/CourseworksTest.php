@@ -56,6 +56,30 @@ final class CourseworksTest extends TestCase {
     }
 
     /**
+     * Get the test coursework from the db, make sure the coursework's values are correct,
+     * use editCourseWork() to change these values then assert that the same record has the changed values
+     */
+    public function testEditCoursework() {
+        $test_coursework = DB::run("SELECT * FROM courseworks WHERE name LIKE 'test coursework'")->fetch(PDO::FETCH_ASSOC);
+        $test_coursework_id = $test_coursework['coursework_id'];
+
+        $this->assertSame("test coursework", $test_coursework['name']);
+        $this->assertEquals(0, $test_coursework['course_id']);
+        $this->assertSame('2019-12-12', $test_coursework['deadline']);
+        $this->assertEquals(10, $test_coursework['credit_weight']);
+        $this->assertSame('2019-12-21', $test_coursework['feedback_due_date']);
+
+        editCoursework($test_coursework_id, "edited coursework", 0, '2019-12-15', 9, '2020-01-01');
+
+        $test_coursework = DB::run("SELECT * FROM courseworks WHERE coursework_id = ?", [$test_coursework_id])->fetch(PDO::FETCH_ASSOC);
+        $this->assertSame("edited coursework", $test_coursework['name']);
+        $this->assertEquals(0, $test_coursework['course_id']);
+        $this->assertSame('2019-12-15', $test_coursework['deadline']);
+        $this->assertEquals(9, $test_coursework['credit_weight']);
+        $this->assertSame('2020-01-01', $test_coursework['feedback_due_date']);
+    }
+
+    /**
      * Get the test coursework record from the db, ensure that the record exists,
      * then run the deleteCourseworkById() method and assert that the record has been deleted
      */

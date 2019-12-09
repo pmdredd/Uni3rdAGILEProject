@@ -50,6 +50,19 @@ final class CoursesTest extends TestCase {
     }
 
     /**
+     * Get the test course from the db, make sure the name is 'test course', use editCourse() to
+     * change the course's name, and assert that the same record has the changed name
+     */
+    public function testEditCourse() {
+        $test_course = DB::run("SELECT * FROM courses WHERE name LIKE 'test course'")->fetch(PDO::FETCH_ASSOC);
+        $test_course_id = $test_course['course_id'];
+        $this->assertEquals("test course", $test_course['name']);
+        editCourse($test_course_id, "edited course");
+        $test_course = DB::run("SELECT * FROM courses WHERE course_id = ?", [$test_course_id])->fetch(PDO::FETCH_ASSOC);
+        $this->assertEquals("edited course", $test_course['name']);
+    }
+
+    /**
      * Get the test course record from the db, ensure that the record exists,
      * then run the deleteCourseById() method and assert that the record has been deleted
      */

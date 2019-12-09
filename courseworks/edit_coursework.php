@@ -14,7 +14,7 @@ if (isset($_POST['name']) && isset($_POST['coursework_id'])) {
     if (empty($coursework_id)) {
         array_push($errors, "Coursework is required");
     }
-    $course_id = $_POST['course_id'];
+    $course_id = $_POST['course'];
     if (empty($course_id)) {
         array_push($errors, "A related Course ID is required");
     }
@@ -32,8 +32,7 @@ if (isset($_POST['name']) && isset($_POST['coursework_id'])) {
     }
 
     if (count($errors) == 0) {
-        DB::run("UPDATE courseworks SET name = ?, course_id = ?, deadline = ?, credit_weight = ?, feedback_due_date = ? 
-                 WHERE coursework_id = ?", [$name, $course_id, $deadline, $credit_weight, $feedback_due_date, $coursework_id]);
+        editCoursework($coursework_id, $name, $course_id, $deadline, $credit_weight, $feedback_due_date);
         header('location: coursework_details.php?id=' . $coursework_id);
     } else {
         foreach ($errors as $error) {

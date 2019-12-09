@@ -27,6 +27,10 @@ function deleteStudentById($student_id) {
     return $student;
 }
 
+function editStudent($student_id, $name) {
+    DB::run("UPDATE students SET name = ? WHERE student_id = ?", [$name, $student_id]);
+}
+
 function getSubmissionsByStudentId($student_id) {
     $query = "SELECT * FROM submissions
               JOIN grades ON submissions.grade_id = grades.grade_id 
