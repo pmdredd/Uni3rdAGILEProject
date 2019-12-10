@@ -21,8 +21,7 @@ function createSubmission($coursework_id, $student_id, $mark, $hand_in_date, $se
     $gradeValue = calculateGrade($mark, $second_submission);
     if (calculateLateness ($mark, $second_submission, $submissiondate, $duedate) === null){
     $gradeId = getGradeId($gradeValue) }
-    else $gradeId =  getGradeId($grade_value);
-
+    else $gradeId =  calculateLateness ($mark, $second_submission, $submissiondate, $duedate));
     $query = "INSERT INTO submissions (coursework_id, student_id, mark, hand_in_date, second_submission, grade_id)
               VALUES (?, ?, ?, ?, ?, ?)";
     DB::run($query, [$coursework_id, $student_id, $mark, $hand_in_date, $second_submission, $grade_id]);
