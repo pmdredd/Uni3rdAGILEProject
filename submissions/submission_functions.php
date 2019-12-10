@@ -2,9 +2,11 @@
 if (php_sapi_name() == "cli") {
     require_once getcwd().'../database/dbconnection.php';
     require_once getcwd().'../grades/grade_functions.php';
+    require_once getcwd().'../courseworks/coursework_functions.php';
 } else {
     require_once $_SERVER['DOCUMENT_ROOT'].'/database/dbconnection.php';
     require_once $_SERVER['DOCUMENT_ROOT'].'/grades/grade_functions.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/courseworks/coursework_functions.php';
 }
 
 function getAllSubmissions() {
@@ -18,13 +20,24 @@ function getAllSubmissions() {
 }
 
 function createSubmission($coursework_id, $student_id, $mark, $hand_in_date, $second_submission) {
-    $gradeValue = calculateGrade($mark, $second_submission);
-    if (calculateLateness ($mark, $second_submission, $submissiondate, $duedate) === null){
-    $gradeId = getGradeId($gradeValue) }
-    else $gradeId =  calculateLateness ($mark, $second_submission, $submissiondate, $duedate));
+    $grade_value = calculateGrade($mark, $second_submission);
+    $grade_id = getGradeId($grade_value);
+    $related_coursework = getCourseworkById($coursework_id);
+    if (submissionIsLate($hand_in_date, $related_coursework['deadline'])) {
+        $lateness = calculateLateness($hand_in_date, $related_coursework['deadline']);
+        $grade_id = applyLatePenalty($grade_id, $lateness);
+    }
     $query = "INSERT INTO submissions (coursework_id, student_id, mark, hand_in_date, second_submission, grade_id)
               VALUES (?, ?, ?, ?, ?, ?)";
     DB::run($query, [$coursework_id, $student_id, $mark, $hand_in_date, $second_submission, $grade_id]);
+}
+
+function submissionIsLate($hand_in_date, $deadline) {
+    if (strtotime($hand_in_date) > strtotime($deadline)) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 function getSubmissionById($submission_id) {

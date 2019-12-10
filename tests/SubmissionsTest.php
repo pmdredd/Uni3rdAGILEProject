@@ -95,6 +95,11 @@ final class SubmissionsTest extends TestCase {
         $this->assertEquals(0, $recordExists);
     }
 
+    public function testSubmissionIsLate() {
+        $this->assertTrue(submissionIsLate("2019-12-13", "2019-12-12"));
+        $this->assertFalse(submissionIsLate("2019-12-12", "2019-12-13"));
+    }
+
     /**
     * Remove the test submission, coursework and student from the db.
     * This is run after every test method.

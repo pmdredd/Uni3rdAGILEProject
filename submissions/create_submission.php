@@ -16,7 +16,7 @@ if (isset($_POST['coursework']) && isset($_POST['student'])
         $mark = null;
     }
     $hand_in_date = $_POST['hand_in_date'];
-    if ($_POST['second_submission']) {
+    if (isset($_POST['second_submission'])) {
         $second_submission = true;
     } else {
         $second_submission = false;

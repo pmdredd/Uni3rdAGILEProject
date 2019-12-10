@@ -134,4 +134,20 @@ final class GradesTest extends TestCase {
         $this->assertEquals("BF", getGrade(1));
     }
 
+    public function testCalculateLateness() {
+        $this->assertEquals(1, calculateLateness("2019-12-13", "2019-12-12"));
+        $this->assertEquals(2, calculateLateness("2019-12-14", "2019-12-12"));
+        $this->assertEquals(3, calculateLateness("2019-12-15", "2019-12-12"));
+        $this->assertEquals(4, calculateLateness("2019-12-16", "2019-12-12"));
+        $this->assertEquals(5, calculateLateness("2019-12-17", "2019-12-12"));
+    }
+
+    public function testApplyLatePenalty() {
+        $this->assertEquals(1, applyLatePenalty(17, 6));
+        $this->assertEquals(12, applyLatePenalty(17, 5));
+        $this->assertEquals(13, applyLatePenalty(17, 4));
+        $this->assertEquals(14, applyLatePenalty(17, 3));
+        $this->assertEquals(15, applyLatePenalty(17, 2));
+        $this->assertEquals(16, applyLatePenalty(17, 1));
+    }
 }
