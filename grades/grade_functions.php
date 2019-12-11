@@ -87,3 +87,20 @@ function calculateGradeSecondSubmission($mark) {
     }
     return false;
 }
+
+// this converts the two string dates into timestamps, finds the difference in seconds, and divides by 864000 to convert seconds into days
+function calculateLateness($hand_in_date, $deadline) {
+    $lateness = ((strtotime($hand_in_date) - strtotime($deadline)) / 86400);
+    return $lateness;
+}
+
+function applyLatePenalty($grade_id, $lateness) {
+    if ($lateness > 5) {
+        // BF is a 'bad fail', assigned if a submission is more than 5 days late
+        $grade_id = getGradeID("BF");
+        return $grade_id;
+    } else {
+        $late_grade_id = $grade_id - $lateness;
+        return $late_grade_id;
+    }
+}
