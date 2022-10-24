@@ -1,18 +1,21 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+
 require_once 'submissions/submission_functions.php';
 
 /**
  * Class SubmissionsTest
  */
-final class SubmissionsTest extends TestCase {
+final class SubmissionsTest extends TestCase
+{
 
     /**
      * Create the test submission and an associated test coursework and student.
      * This will be run before each test method.
      */
-    protected function setUp(): void {
+    protected function setUp(): void
+    {
         DB::run("INSERT INTO students (student_id, name) VALUES (0, 'test student')");
         DB::run("INSERT INTO courseworks (coursework_id, name, course_id, deadline, credit_weight, feedback_due_date) 
                  VALUES (0, 'test coursework', 2, '2019-12-12', 10, '2019-12-21')");
@@ -25,7 +28,8 @@ final class SubmissionsTest extends TestCase {
      * This implementation of the test will only actually test that *something* is returned,
      * (i.e. that it returns something that is not empty), not that the correct data is returned.
      */
-    public function testGetAllSubmissions() {
+    public function testGetAllSubmissions()
+    {
         $submissions = getAllSubmissions();
         $this->assertNotEmpty($submissions);
     }
@@ -34,7 +38,8 @@ final class SubmissionsTest extends TestCase {
      * Create a new submission, then make sure that the details of the newly created
      * submission are the same as the latest submission record in the db.
      */
-    public function testCreateSubmission() {
+    public function testCreateSubmission()
+    {
         createSubmission(2, 0, 80, '2000-12-12', 0);
         $test_submission = DB::run("SELECT * FROM submissions ORDER BY submission_id DESC LIMIT 1")->fetch(PDO::FETCH_ASSOC);
 
@@ -49,7 +54,8 @@ final class SubmissionsTest extends TestCase {
      * Get the test submission from the db, then check if that submission's id is the same as the
      * submission returned by the getSubmissionById() function.
      */
-    public function testGetSubmissionById() {
+    public function testGetSubmissionById()
+    {
         $submission = getSubmissionById(0);
 
         $this->assertEquals(0, $submission['submission_id']);
@@ -59,7 +65,8 @@ final class SubmissionsTest extends TestCase {
      * Get the test submission from the db, make sure the submission's values are correct,
      * use editSubmission() to change these values then assert that the same record has the changed values
      */
-    public function testEditSubmission() {
+    public function testEditSubmission()
+    {
         $test_submission = DB::run("SELECT * FROM submissions WHERE submission_id = 0")->fetch(PDO::FETCH_ASSOC);
         $this->assertEquals(2, $test_submission["coursework_id"]);
         $this->assertEquals(0, $test_submission["student_id"]);
@@ -81,7 +88,8 @@ final class SubmissionsTest extends TestCase {
      * Get the test submission record from the db, ensure that the record exists,
      * then run the deleteSubmissionById() method and assert that the record has been deleted
      */
-    public function testDeleteSubmissionById() {
+    public function testDeleteSubmissionById()
+    {
         $test_submission = DB::run("SELECT * FROM submissions WHERE submission_id = 0")->fetch(PDO::FETCH_ASSOC);
         $test_submission_id = $test_submission['submission_id'];
         // the record should exist, the number of columns in count should be 1
@@ -95,16 +103,18 @@ final class SubmissionsTest extends TestCase {
         $this->assertEquals(0, $recordExists);
     }
 
-    public function testSubmissionIsLate() {
+    public function testSubmissionIsLate()
+    {
         $this->assertTrue(submissionIsLate("2019-12-13", "2019-12-12"));
         $this->assertFalse(submissionIsLate("2019-12-12", "2019-12-13"));
     }
 
     /**
-    * Remove the test submission, coursework and student from the db.
-    * This is run after every test method.
-    */
-    protected function tearDown(): void {
+     * Remove the test submission, coursework and student from the db.
+     * This is run after every test method.
+     */
+    protected function tearDown(): void
+    {
         DB::run("DELETE FROM courseworks WHERE name like 'test coursework'");
         DB::run("DELETE FROM students WHERE name LIKE 'test student'");
         DB::run("DELETE FROM submissions WHERE submission_id = 0 OR hand_in_date LIKE '2000-12-12'");

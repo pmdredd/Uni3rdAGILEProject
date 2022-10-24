@@ -2,8 +2,12 @@
     "name": "team/agile-project",
     "description": "An application for lecturers to manage student coursework submissions",
     "type": "project",
+    "require": {
+        "ext-pdo": "*",
+        "php": "^8.1"
+    },
     "require-dev": {
-        "phpunit/phpunit": "^8.4"
+        "phpunit/phpunit": "^9.5"
     },
     "authors": [
         {
@@ -19,8 +23,5 @@
         {
             "name": "Stuart Anderson"
         }
-    ],
-    "require": {
-      "ext-pdo": "*"
-    }
+    ]
 }
