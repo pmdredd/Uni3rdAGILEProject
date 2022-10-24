@@ -7,6 +7,5 @@ parameters:
         - students
         - submissions
         - tests
-        - tests
     ignoreErrors:
         - '#^Call to static method run\(\) on an unknown class DB\.$#'
