@@ -6,8 +6,10 @@ require_once '../header.html';
 session_start();
 $errors = array();
 
-if (isset($_POST['coursework']) && isset($_POST['student'])
-    && isset($_POST['mark']) && isset($_POST['hand_in_date']) && isset($_POST['submission_id'])) {
+if (
+    isset($_POST['coursework']) && isset($_POST['student'])
+    && isset($_POST['mark']) && isset($_POST['hand_in_date']) && isset($_POST['submission_id'])
+) {
 
     $coursework_id = $_POST['coursework'];
     $student_id = $_POST['student'];

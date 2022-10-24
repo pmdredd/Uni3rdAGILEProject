@@ -26,4 +26,3 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         echo '<p><a href="login.php">Login failed, please try again</a></p>';
     }
 }
-?>

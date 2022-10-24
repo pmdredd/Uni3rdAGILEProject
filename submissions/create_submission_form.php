@@ -12,20 +12,20 @@ $students = getAllStudents();
 <form method="post" action="create_submission.php">
     Coursework for this Submission
     <select name='coursework' required>
-    <option disabled selected value></option>
-    <?php foreach ($courseworks as $coursework) {
-        echo "<option value='" . $coursework['coursework_id'] . "'>" . $coursework['name'] . "</option>";
-    }
-    ?>
+        <option disabled selected value></option>
+        <?php foreach ($courseworks as $coursework) {
+            echo "<option value='" . $coursework['coursework_id'] . "'>" . $coursework['name'] . "</option>";
+        }
+        ?>
     </select>
     <br>
     Student that this Submission belongs to
     <select name='student' required>
-    <option disabled selected value></option>
-    <?php foreach ($students as $student) {
-        echo "<option value='" . $student['student_id'] . "'>" . $student['name'] . "</option>";
-    }
-    ?>
+        <option disabled selected value></option>
+        <?php foreach ($students as $student) {
+            echo "<option value='" . $student['student_id'] . "'>" . $student['name'] . "</option>";
+        }
+        ?>
     </select>
     <br>
     The Student's mark for this submission (out of 100)

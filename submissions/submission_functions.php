@@ -1,15 +1,16 @@
 <?php
 if (php_sapi_name() == "cli") {
-    require_once getcwd().'../database/dbconnection.php';
-    require_once getcwd().'../grades/grade_functions.php';
-    require_once getcwd().'../courseworks/coursework_functions.php';
+    require_once getcwd() . '../database/dbconnection.php';
+    require_once getcwd() . '../grades/grade_functions.php';
+    require_once getcwd() . '../courseworks/coursework_functions.php';
 } else {
-    require_once $_SERVER['DOCUMENT_ROOT'].'/database/dbconnection.php';
-    require_once $_SERVER['DOCUMENT_ROOT'].'/grades/grade_functions.php';
-    require_once $_SERVER['DOCUMENT_ROOT'].'/courseworks/coursework_functions.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/database/dbconnection.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/grades/grade_functions.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/courseworks/coursework_functions.php';
 }
 
-function getAllSubmissions() {
+function getAllSubmissions()
+{
     $query = "SELECT submission_id, hand_in_date, stu.name as student_name, cworks.name as coursework_name, c.name as course_name
               FROM submissions sub
               JOIN students stu ON sub.student_id = stu.student_id
@@ -20,7 +21,8 @@ function getAllSubmissions() {
     return $submissions;
 }
 
-function createSubmission($coursework_id, $student_id, $mark, $hand_in_date, $second_submission) {
+function createSubmission($coursework_id, $student_id, $mark, $hand_in_date, $second_submission)
+{
     $grade_value = calculateGrade($mark, $second_submission);
     $grade_id = getGradeId($grade_value);
     $related_coursework = getCourseworkById($coursework_id);
@@ -33,7 +35,8 @@ function createSubmission($coursework_id, $student_id, $mark, $hand_in_date, $se
     DB::run($query, [$coursework_id, $student_id, $mark, $hand_in_date, $second_submission, $grade_id]);
 }
 
-function submissionIsLate($hand_in_date, $deadline) {
+function submissionIsLate($hand_in_date, $deadline)
+{
     if (strtotime($hand_in_date) > strtotime($deadline)) {
         return true;
     } else {
@@ -41,7 +44,8 @@ function submissionIsLate($hand_in_date, $deadline) {
     }
 }
 
-function getSubmissionById($submission_id) {
+function getSubmissionById($submission_id)
+{
     $query = "SELECT submission_id, sub.coursework_id, stu.student_id, mark, hand_in_date, g.grade, second_submission, stu.name as student_name, c.name 
               FROM submissions sub
               JOIN students stu ON sub.student_id = stu.student_id
@@ -52,14 +56,16 @@ function getSubmissionById($submission_id) {
     return $submission;
 }
 
-function editSubmission($submission_id, $coursework_id, $student_id, $mark, $hand_in_date, $second_submission) {
+function editSubmission($submission_id, $coursework_id, $student_id, $mark, $hand_in_date, $second_submission)
+{
     $grade_value = calculateGrade($mark, $second_submission);
     $grade_id = getGradeId($grade_value);
     DB::run("UPDATE submissions SET coursework_id = ?, student_id = ?, mark = ?, hand_in_date = ?, second_submission = ?, grade_id = ? 
                  WHERE submission_id = ?", [$coursework_id, $student_id, $mark, $hand_in_date, $second_submission, $grade_id, $submission_id]);
 }
 
-function deleteSubmissionById($submission_id) {
+function deleteSubmissionById($submission_id)
+{
     $query = "DELETE FROM submissions WHERE submission_id=?";
     $submission = DB::run($query, [$submission_id]);
     return $submission;

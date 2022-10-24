@@ -39,5 +39,3 @@ if ($coursework) {
 } else {
     echo 'There was a problem, please try again';
 }
-
-?>

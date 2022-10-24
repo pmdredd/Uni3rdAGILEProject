@@ -1,21 +1,24 @@
 <?php
 if (php_sapi_name() == "cli") {
-    require_once getcwd().'../database/dbconnection.php';
+    require_once getcwd() . '../database/dbconnection.php';
 } else {
-    require_once $_SERVER['DOCUMENT_ROOT'].'/database/dbconnection.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/database/dbconnection.php';
 }
 
-function getGradeId($grade) {
+function getGradeId($grade)
+{
     $grade_id = DB::run("SELECT grade_id FROM grades WHERE grade LIKE ?", [$grade])->fetchColumn();
     return $grade_id;
 }
 
-function getGrade($grade_id) {
+function getGrade($grade_id)
+{
     $grade = DB::run("SELECT grade FROM grades WHERE grade_id = ?", [$grade_id])->fetchColumn();
     return $grade;
 }
 
-function calculateGrade($mark, $second_submission) {
+function calculateGrade($mark, $second_submission)
+{
     if ($second_submission) {
         return calculateGradeSecondSubmission($mark);
     } else {
@@ -23,10 +26,11 @@ function calculateGrade($mark, $second_submission) {
     }
 }
 
-function calculateGradeFirstSubmission($mark) {
+function calculateGradeFirstSubmission($mark)
+{
     if ($mark > 100) {
         return false;
-    } elseif ($mark >= 95 ) {
+    } elseif ($mark >= 95) {
         return "A1";
     } elseif ($mark >= 89) {
         return "A2";
@@ -69,19 +73,20 @@ function calculateGradeFirstSubmission($mark) {
     }
 }
 
-function calculateGradeSecondSubmission($mark) {
+function calculateGradeSecondSubmission($mark)
+{
     if ($mark > 100) {
         return false;
     } elseif ($mark >= 40) {
         return "D3";
     } elseif ($mark >= 37) {
         return "MF1";
-    } elseif($mark >= 34) {
+    } elseif ($mark >= 34) {
         return "MF2";
     } elseif ($mark >= 30) {
         return "MF3";
     } elseif ($mark >= 20) {
-        return "CF"; 
+        return "CF";
     } elseif ($mark >= 0) {
         return "BF";
     }
@@ -89,12 +94,14 @@ function calculateGradeSecondSubmission($mark) {
 }
 
 // this converts the two string dates into timestamps, finds the difference in seconds, and divides by 864000 to convert seconds into days
-function calculateLateness($hand_in_date, $deadline) {
+function calculateLateness($hand_in_date, $deadline)
+{
     $lateness = ((strtotime($hand_in_date) - strtotime($deadline)) / 86400);
     return $lateness;
 }
 
-function applyLatePenalty($grade_id, $lateness) {
+function applyLatePenalty($grade_id, $lateness)
+{
     if ($lateness > 5) {
         // BF is a 'bad fail', assigned if a submission is more than 5 days late
         $grade_id = getGradeID("BF");

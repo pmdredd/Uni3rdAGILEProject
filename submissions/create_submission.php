@@ -5,8 +5,10 @@ require_once '../header.html';
 session_start();
 $errors = array();
 
-if (isset($_POST['coursework']) && isset($_POST['student'])
-    && isset($_POST['mark']) && isset($_POST['hand_in_date'])) {
+if (
+    isset($_POST['coursework']) && isset($_POST['student'])
+    && isset($_POST['mark']) && isset($_POST['hand_in_date'])
+) {
 
     $coursework_id = $_POST['coursework'];
     $student_id = $_POST['student'];
@@ -33,7 +35,7 @@ if (isset($_POST['coursework']) && isset($_POST['student'])
     }
 
     if (count($errors) == 0) {
-        
+
         createSubmission($coursework_id, $student_id, $mark, $hand_in_date, $second_submission);
         $_SESSION['success'] = true;
         header('location: all_submissions.php');

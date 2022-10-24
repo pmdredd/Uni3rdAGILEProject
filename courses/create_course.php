@@ -13,7 +13,7 @@ if (isset($_POST['name'])) {
     }
 
     if (count($errors) == 0) {
-        
+
         createCourse($name);
         $_SESSION['success'] = true;
         header('location: all_courses.php');
